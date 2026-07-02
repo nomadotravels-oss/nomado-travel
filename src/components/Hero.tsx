@@ -37,15 +37,15 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-20 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto w-full pt-12"
+        className="relative z-20 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto w-full h-full pb-[20vh]"
       >
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[10px] md:text-[11px] tracking-[0.3em] font-700 text-[#F5F9FD]/80 uppercase mb-4"
+          className="text-[12px] md:text-[14px] tracking-[0.25em] font-700 text-[#F59E0B] uppercase mb-4"
         >
-          Curated Expeditions
+          Curated Experiences
         </motion.span>
 
         <motion.h1
@@ -66,7 +66,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-[25vh] left-1/2 -translate-x-1/2 z-20"
       >
         <a
           href="tel:+917006712010"
