@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-20 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto w-full h-full pt-[10vh]"
+        className="relative z-20 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto w-full h-full pb-[10vh] md:pb-0 md:pt-[10vh]"
       >
         <motion.span
           initial={{ opacity: 0, y: 12 }}
@@ -66,7 +66,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-[25vh] md:bottom-[15vh] left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-[17vh] md:bottom-[15vh] left-1/2 -translate-x-1/2 z-20"
       >
         <a
           href="tel:+917006712010"
