@@ -23,8 +23,7 @@ export default function Hero() {
             poster={asset("/images/hero-poster.jpg")}
             className="absolute inset-0 h-full w-full object-cover object-center"
           >
-            <source src={asset("/images/hero.webm")} type="video/webm" />
-            <source src={asset("/images/hero.mp4")} type="video/mp4" />
+            <source src={asset("/images/hero2-trimmed.mp4")} type="video/mp4" />
           </video>
         </div>
       </motion.div>
