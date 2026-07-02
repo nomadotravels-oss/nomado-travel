@@ -58,18 +58,23 @@ export default function Hero() {
         </motion.h1>
 
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+
+      </motion.div>
+
+      {/* Call Now Button - Lower Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+      >
+        <a
+          href="tel:+917006712010"
+          className="flex items-center gap-3 text-[12px] tracking-[0.2em] font-700 uppercase px-10 py-4 border border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-500 shadow-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] backdrop-blur-md"
         >
-          <a
-            href="#contact"
-            className="text-[11px] tracking-[0.2em] font-700 uppercase px-8 py-4 border border-[#F59E0B]/50 text-white bg-[#F59E0B]/10 hover:bg-[#F59E0B] hover:text-black hover:border-[#F59E0B] rounded-full transition-all duration-500 shadow-lg hover:shadow-[0_8px_30px_rgba(245,158,11,0.25)] backdrop-blur-sm"
-          >
-            Enquire Now
-          </a>
-        </motion.div>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          Call Now
+        </a>
       </motion.div>
 
       {/* Scroll indicator */}
