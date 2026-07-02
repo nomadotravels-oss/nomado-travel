@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = ["Destinations", "Experiences", "Journal", "Contact"];
@@ -7,6 +7,19 @@ const linkHrefs: Record<string, string> = { Contact: "#reach-us" };
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -14,10 +27,14 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 py-4 bg-[#083A7A]/95 backdrop-blur-md border-b border-[#D97706]/25"
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-20 transition-all duration-500 ease-in-out ${
+          scrolled
+            ? "py-4 bg-[#083A7A]/80 backdrop-blur-md border-b border-[#F5F9FD]/10 shadow-sm"
+            : "py-6 md:py-8 bg-transparent border-b border-transparent"
+        }`}
       >
         {/* Brand */}
-        <a href="#" className="text-[1.15rem] md:text-[1.3rem] tracking-wide">
+        <a href="#" className="text-[1.15rem] md:text-[1.3rem] tracking-wide select-none">
           <span className="font-century-bold text-[#F59E0B]">nomado</span><span className="font-century text-[#F5F9FD]">.travel</span>
         </a>
 
@@ -27,14 +44,20 @@ export default function Navbar() {
             <a
               key={link}
               href={linkHrefs[link] ?? `#${link.toLowerCase()}`}
-              className="font-clash text-[12px] tracking-[0.18em] uppercase text-[#9DB2C7] hover:text-[#F5F9FD] transition-colors duration-300"
+              className={`font-clash text-[12px] tracking-[0.2em] uppercase transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-[#F59E0B] hover:after:w-full after:transition-all after:duration-300 ${
+                scrolled ? "text-[#C9D9E8] hover:text-[#F5F9FD]" : "text-white/90 hover:text-white"
+              }`}
             >
               {link}
             </a>
           ))}
           <a
             href="#contact"
-            className="font-clash text-[12px] tracking-[0.15em] uppercase px-5 py-2.5 border border-[#D97706] text-[#F59E0B] hover:bg-[#D97706] hover:text-white transition-all duration-300"
+            className={`font-clash text-[12px] tracking-[0.18em] uppercase px-6 py-2.5 border rounded-full transition-all duration-500 ${
+              scrolled
+                ? "border-[#F59E0B]/40 text-[#F59E0B] hover:bg-[#F59E0B] hover:text-white hover:border-[#F59E0B]"
+                : "border-white/30 text-white hover:bg-white hover:text-black hover:border-white"
+            }`}
           >
             Make an Enquiry
           </a>

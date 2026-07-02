@@ -77,6 +77,19 @@ function RegionTile({ region, onClick, inView, delay }: { region: Region; onClic
 }
 
 function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => void }) {
+  const innerSliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollInner = (direction: "left" | "right") => {
+    if (innerSliderRef.current) {
+      const { scrollLeft, clientWidth } = innerSliderRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      innerSliderRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <motion.div
       key="expanded"
@@ -84,49 +97,74 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45 }}
-      className="relative w-full overflow-hidden bg-white"
+      className="relative w-full overflow-hidden bg-white font-switzerland"
     >
       <div className="relative z-10 pt-1 pb-6">
         {/* Header */}
-        <div className="flex items-start justify-between mb-10 md:mb-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h3 className="font-clash text-[clamp(2.4rem,5vw,4.5rem)] font-600 text-[#083A7A] leading-none">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-gray-100 gap-4">
+          <div>
+            <span className="text-[10px] tracking-[0.25em] font-800 text-[#D97706] uppercase mb-1 block">
+              {region.tagline}
+            </span>
+            <h3 className="text-2xl md:text-3xl font-800 text-black tracking-tight leading-none">
               {region.name}
             </h3>
-          </motion.div>
+          </div>
 
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            onClick={onClose}
-            className="flex items-center gap-2 font-clash text-[11px] tracking-[0.25em] uppercase text-[#6B7280] hover:text-[#083A7A] transition-colors duration-300 mt-2"
-          >
-            <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M15 5L5 15M5 5l10 10" />
-            </svg>
-            Close
-          </motion.button>
+          <div className="flex items-center gap-4 self-start sm:self-center">
+            {/* Inner Slider Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => scrollInner("left")}
+                className="w-10 h-10 rounded-full border border-gray-250 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm"
+                aria-label="Previous Destinations"
+              >
+                <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10H5M10 15l-5-5 5-5" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollInner("right")}
+                className="w-10 h-10 rounded-full border border-gray-250 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm"
+                aria-label="Next Destinations"
+              >
+                <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 10h10M10 5l5 5-5 5" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="hidden sm:block h-6 w-px bg-gray-200" />
+
+            <button
+              onClick={onClose}
+              className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[#6B7280] hover:text-black transition-colors duration-300 font-800"
+            >
+              <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" d="M15 5L5 15M5 5l10 10" />
+              </svg>
+              Close
+            </button>
+          </div>
         </div>
 
-        {/* Destination filmstrip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+        {/* Destination Horizontal Slider (MySwitzerland.com Precise Dimensions & Bold Titles) */}
+        <div
+          ref={innerSliderRef}
+          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full"
+        >
           {region.destinations.map((dest, i) => (
             <motion.div
               key={dest.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              className="group/card relative overflow-hidden rounded-2xl shadow-[0_12px_30px_-14px_rgba(0,0,0,0.6)]"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.55, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="group/card relative overflow-hidden rounded-2xl shadow-[0_12px_32px_-16px_rgba(0,0,0,0.18)] bg-gray-50 border border-gray-200/30 w-[280px] sm:w-[320px] md:w-[360px] shrink-0 snap-start"
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+              <div className="relative aspect-square overflow-hidden rounded-2xl w-full">
                 <motion.div
-                  whileHover={{ scale: 1.07 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -134,29 +172,18 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
                     alt={dest.name}
                     fill
                     className="object-cover"
-                    sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 16vw"
+                    sizes="(max-width:640px) 280px, (max-width:1024px) 320px, 360px"
                   />
                 </motion.div>
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06172E]/95 via-[#06172E]/25 to-transparent group-hover/card:from-[#06172E]/[0.98] transition-all duration-500" />
+                {/* Soft bottom scrim gradient overlay inspired by MySwitzerland */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent group-hover/card:from-black/85 transition-all duration-300" />
 
-                {/* Saffron top accent line on hover */}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute top-0 left-0 right-0 h-0.5 bg-[#D97706] origin-left"
-                />
-
-                {/* Text */}
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h4 className="font-clash text-sm md:text-base font-600 text-[#F5F9FD] leading-tight mb-1">
+                {/* Text overlaid inside the card (bottom-left) - Name Only in Extra Bold */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col items-start font-switzerland z-10">
+                  <h4 className="text-base md:text-lg lg:text-xl font-800 text-white leading-snug tracking-tight">
                     {dest.name}
                   </h4>
-                  <p className="text-[#E5EDF5]/85 text-xs md:text-sm leading-snug">
-                    {dest.desc}
-                  </p>
                 </div>
               </div>
             </motion.div>
@@ -175,28 +202,18 @@ export default function Destinations() {
   const activeRegion = regions.find(r => r.id === open) ?? null;
 
   return (
-    <section id="destinations" ref={ref} className="bg-white py-12 md:py-16 px-6 md:px-12 lg:px-20">
+    <section id="destinations" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="max-w-3xl mb-8 md:mb-10">
-
+        <div className="max-w-3xl mb-12 md:mb-16 font-switzerland">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-clash text-[clamp(1.8rem,4vw,3.2rem)] font-500 leading-[1.05] text-[#083A7A] mb-2"
+            className="font-switzerland text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
           >
-            Where we{" "}
-            <span className="font-cormorant italic font-400 text-[#D97706]">take you.</span>
+            Destinations
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3 }}
-            className="text-[#4B5563] text-sm md:text-base leading-[1.7] max-w-xl"
-          >
-            Two of the most extraordinary regions on earth.
-          </motion.p>
         </div>
 
         {/* Content */}
@@ -208,7 +225,7 @@ export default function Destinations() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 gap-5 md:gap-6"
+              className="grid md:grid-cols-2 gap-8 md:gap-12"
             >
               {regions.map((region, ri) => (
                 <RegionTile

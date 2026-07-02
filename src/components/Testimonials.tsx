@@ -11,9 +11,9 @@ const testimonials = [
 
 function Stars() {
   return (
-    <div className="flex gap-1 mb-4" aria-label="5 stars">
+    <div className="flex gap-1" aria-label="5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className="w-3.5 h-3.5" fill="#D97706">
+        <svg key={i} viewBox="0 0 20 20" className="w-3 h-3" fill="#D97706">
           <path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1l-4.94 2.6.94-5.5-4-3.9 5.53-.8z" />
         </svg>
       ))}
@@ -23,10 +23,10 @@ function Stars() {
 
 function NavBtn({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
   return (
-    <button onClick={onClick} aria-label={dir} className="w-11 h-11 rounded-full bg-white border border-[#E8EDF3] shadow-md hover:shadow-lg hover:bg-[#D97706] hover:border-[#D97706] text-[#475569] hover:text-white hover:scale-105 transition-all duration-300 flex items-center justify-center">
+    <button onClick={onClick} aria-label={dir} className="w-10 h-10 rounded-full border border-gray-250 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm">
       {dir === "prev"
-        ? <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" /></svg>
-        : <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 6l6 6-6 6" /></svg>}
+        ? <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10H5M10 15l-5-5 5-5" /></svg>
+        : <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 10h10M10 5l5 5-5 5" /></svg>}
     </button>
   );
 }
@@ -52,51 +52,74 @@ export default function Testimonials() {
   const shown = testimonials.slice(safePage * perPage, safePage * perPage + perPage);
 
   return (
-    <section ref={ref} className="bg-[#F5F8FD] py-12 md:py-16 px-6 md:px-12 lg:px-20">
+    <section ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <motion.h2 initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-clash text-[clamp(1.8rem,3.5vw,3rem)] font-500 leading-[1.02] text-[#083A7A]">
-            Words from{" "}
-            <span className="font-cormorant italic font-400 text-[#D97706]">our travellers.</span>
-          </motion.h2>
+        
+        {/* Header Block with Navigation Controls in Top Right */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 md:mb-16 gap-6">
+          <div className="max-w-2xl font-switzerland">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none"
+            >
+              Words from <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">our travellers.</span>
+            </motion.h2>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-2 self-start sm:self-end">
+            <NavBtn dir="prev" onClick={() => setPage(() => (safePage - 1 + pageCount) % pageCount)} />
+            <NavBtn dir="next" onClick={() => setPage(() => (safePage + 1) % pageCount)} />
+          </div>
         </div>
 
+        {/* Testimonials Grid Row */}
         <div className="flex items-center gap-3 md:gap-4">
-          <div className="shrink-0">
-            <NavBtn dir="prev" onClick={() => setPage(() => (safePage - 1 + pageCount) % pageCount)} />
-          </div>
-          <div className={`flex-1 grid gap-5 md:gap-6 ${perPage === 1 ? "grid-cols-1" : "grid-cols-3"}`}>
+          <div className={`flex-1 grid gap-6 md:gap-8 ${perPage === 1 ? "grid-cols-1" : "grid-cols-3"}`}>
           <AnimatePresence mode="wait">
             {shown.map((t, i) => (
               <motion.figure key={`t-${safePage}-${i}`}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="bg-white border border-[#EEF2F7] rounded-3xl shadow-[0_10px_30px_-15px_rgba(8,58,122,0.28)] hover:shadow-[0_18px_40px_-15px_rgba(8,58,122,0.38)] transition-shadow duration-500 p-6 md:p-7 flex flex-col">
-                <Stars />
-                <blockquote className="font-cormorant italic text-[#1F2937] text-base md:text-lg leading-[1.55] flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-5 pt-4 border-t border-[#E2E8F0]">
-                  <div className="font-clash text-sm font-600 text-[#083A7A]">{t.name}</div>
-                  <div className="font-clash text-[10px] tracking-[0.1em] uppercase text-[#6B7280] mt-1">{t.place}</div>
-                </figcaption>
+                className="bg-white border border-gray-100 rounded-3xl shadow-[0_16px_36px_-24px_rgba(8,58,122,0.1)] hover:shadow-[0_24px_48px_-24px_rgba(8,58,122,0.16)] transition-all duration-500 p-6 md:p-8 flex flex-col justify-between min-h-[300px]">
+                
+                <div>
+                  {/* Top Section: Profile Details + Stars */}
+                  <div className="flex items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-[#D97706]/10 text-[#D97706] flex items-center justify-center font-800 text-sm shrink-0 uppercase">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="text-xs md:text-sm font-800 text-black leading-tight">{t.name}</div>
+                        <div className="text-[9px] tracking-[0.12em] font-700 uppercase text-gray-400 mt-1">{t.place}</div>
+                      </div>
+                    </div>
+                    <Stars />
+                  </div>
+
+                  {/* Quote Body */}
+                  <blockquote className="font-cormorant italic text-gray-700 text-base md:text-lg leading-relaxed">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                </div>
+
               </motion.figure>
             ))}
           </AnimatePresence>
           </div>
-          <div className="shrink-0">
-            <NavBtn dir="next" onClick={() => setPage(() => (safePage + 1) % pageCount)} />
-          </div>
         </div>
 
-        <div className="flex justify-center gap-2 mt-6">
+        {/* Indicators */}
+        <div className="flex justify-center gap-2 mt-10">
           {Array.from({ length: pageCount }, (_, p) => (
             <button key={p} onClick={() => setPage(p)} aria-label={`Page ${p + 1}`}
-              className={`h-1 transition-all duration-300 ${p === safePage ? "w-8 bg-[#D97706]" : "w-4 bg-[#CBD5E1]"}`} />
+              className={`h-1.5 rounded-full transition-all duration-300 ${p === safePage ? "w-8 bg-[#D97706]" : "w-4 bg-gray-200"}`} />
           ))}
         </div>
+
       </div>
     </section>
   );

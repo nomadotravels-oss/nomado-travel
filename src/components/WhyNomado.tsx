@@ -24,25 +24,28 @@ export default function WhyNomado() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="bg-[#F5F8FD] py-12 md:py-16 px-6 md:px-12 lg:px-20">
+    <section ref={ref} className="bg-[#F5F8FD] py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
       <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 md:gap-16">
+        
         {/* Left: image + heading */}
-        <div className="md:col-span-5">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-clash text-[clamp(1.8rem,3.5vw,2.8rem)] font-500 leading-[1.05] text-[#083A7A] mb-6"
-          >
-            Travel with{" "}
-            <span className="font-cormorant italic font-400 text-[#D97706]">intention.</span>
-          </motion.h2>
+        <div className="md:col-span-5 flex flex-col justify-between">
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="text-3xl md:text-4xl lg:text-5xl font-800 leading-[1.1] text-black mb-8"
+            >
+              Travel with{" "}
+              <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">intention.</span>
+            </motion.h2>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="relative aspect-[5/4] overflow-hidden"
+            className="relative aspect-[5/4] overflow-hidden rounded-3xl border border-gray-200/30 shadow-[0_12px_28px_-16px_rgba(0,0,0,0.12)]"
           >
             <Image
               src={asset("/images/dal-lake.jpg")}
@@ -50,27 +53,28 @@ export default function WhyNomado() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#083A7A]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </motion.div>
         </div>
 
         {/* Right: pillars */}
-        <div className="md:col-span-7 flex flex-col justify-center divide-y divide-[#E2E8F0]">
+        <div className="md:col-span-7 flex flex-col justify-center divide-y divide-gray-200">
           {pillars.map((p, i) => (
             <motion.div
               key={p.word}
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.25 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="py-5 md:py-6 group"
+              className="py-6 md:py-8 group"
             >
-              <h3 className="font-clash text-3xl md:text-4xl font-500 text-[#083A7A] transition-colors duration-300 group-hover:text-[#0F4C9C] mb-3">
+              <h3 className="text-2xl md:text-3xl font-800 text-black transition-colors duration-300 group-hover:text-[#D97706] mb-3">
                 {p.word}
               </h3>
-              <p className="text-[#4B5563] text-base leading-[1.8] max-w-md">{p.desc}</p>
+              <p className="text-[#4B5563] text-sm md:text-base leading-relaxed max-w-md">{p.desc}</p>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

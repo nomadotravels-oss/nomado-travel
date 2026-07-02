@@ -5,7 +5,7 @@ import { asset } from "@/lib/asset";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 
 const quotes = [
-  { lang: "Persian",  dir: "rtl" as const, text: "«اگر بر روی زمین هست، همین‌جاست، همین‌جاست، همین‌جاست»" },
+  { lang: "Persian",  dir: "rtl" as const, text: "«اگر بر روی زمین هست, همین‌جاست, همین‌جاست, همین‌جاست»" },
   { lang: "English",  dir: "ltr" as const, text: "“If there is a paradise on earth, it is here, it is here, it is here.”" },
   { lang: "Hindi",    dir: "ltr" as const, text: "«अगर धरती पर कहीं स्वर्ग है, तो यहीं है, यहीं है, यहीं है»" },
   { lang: "French",   dir: "ltr" as const, text: "«S’il existe un paradis sur terre, c’est ici, c’est ici, c’est ici.»" },
@@ -36,7 +36,7 @@ export default function Interlude() {
   const current = quotes[index];
 
   return (
-    <section ref={ref} className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center justify-center">
+    <section ref={ref} className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center justify-center font-switzerland">
       {/* Parallax image */}
       <motion.div style={{ y }} className="absolute inset-0 h-[130%] -top-[15%]">
         <Image
@@ -58,7 +58,7 @@ export default function Interlude() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1 }}
-          className="font-clash text-[11px] tracking-[0.4em] uppercase text-[#F59E0B] block mb-12"
+          className="text-[10px] md:text-[11px] tracking-[0.3em] font-700 text-[#F59E0B] uppercase block mb-12"
         >
           The Chinar in Autumn
         </motion.span>
@@ -87,13 +87,13 @@ export default function Interlude() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.5 }}
-          className="font-clash text-[11px] tracking-[0.25em] uppercase text-[#C9D9E8]/55 block mt-10"
+          className="text-[10px] tracking-[0.2em] font-700 uppercase text-[#C9D9E8]/65 block mt-10"
         >
           — Amir Khusrau, of Kashmir
         </motion.span>
 
         {/* Language name + dot indicators */}
-        <div className="flex items-center justify-center gap-4 mt-7">
+        <div className="flex items-center justify-center gap-4 mt-8">
           <AnimatePresence mode="wait">
             <motion.span
               key={`lang-${index}`}
@@ -101,7 +101,7 @@ export default function Interlude() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.35 }}
-              className="font-clash text-[10px] tracking-[0.3em] uppercase text-[#F59E0B]/65 w-16 text-right"
+              className="text-[9px] tracking-[0.25em] font-700 uppercase text-[#F59E0B]/75 w-20 text-right"
             >
               {current.lang}
             </motion.span>
@@ -127,7 +127,7 @@ export default function Interlude() {
             ))}
           </div>
 
-          <span className="w-16" />
+          <span className="w-20" />
         </div>
       </div>
     </section>

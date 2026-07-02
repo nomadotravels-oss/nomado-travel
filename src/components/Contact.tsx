@@ -4,10 +4,7 @@ import Image from "next/image";
 import { asset } from "@/lib/asset";
 import { motion, useInView } from "framer-motion";
 
-// Paste your Google Apps Script web-app URL here after deploying it.
-// See: https://developers.google.com/apps-script/guides/web
 const SHEET_URL = process.env.NEXT_PUBLIC_SHEET_URL ?? "";
-
 const interests = ["Culture & Heritage", "Food & Culinary", "Photography", "Nature & Trekking", "Craft & Artisan", "Village Life", "Winter Kashmir", "Spiritual Trails"];
 
 export default function Contact() {
@@ -35,11 +32,11 @@ export default function Contact() {
       try {
         await fetch(SHEET_URL, {
           method: "POST",
-          mode: "no-cors", // required for Google Apps Script
+          mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
-      } catch (_) { /* no-cors means we can't read the response — treat as success */ }
+      } catch (_) {}
     }
     setSending(false);
     setSubmitted(true);
@@ -51,19 +48,21 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="bg-white">
-      <div className="grid lg:grid-cols-2 lg:items-center">
-        {/* Left: image */}
-        <div className="relative h-[42vh] lg:h-[58vh] overflow-hidden flex items-end">
+    <section id="contact" ref={ref} className="bg-[#FAFAF8] lg:bg-white font-switzerland">
+      <div className="grid lg:grid-cols-2 lg:items-stretch">
+        
+        {/* Left: Image Container */}
+        <div className="relative h-[45vh] lg:h-auto overflow-hidden flex items-end">
           <Image
             src={asset("/images/snow.jpg")}
             alt="Snow-capped mountains of Kashmir"
             fill
             className="object-cover"
             sizes="(max-width:1024px) 100vw, 50vw"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#072350]/85 via-[#072350]/20 to-[#072350]/25" />
-          <div className="relative p-8 md:p-12 lg:p-16">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06172E]/90 via-[#06172E]/20 to-[#06172E]/25" />
+          <div className="relative p-8 md:p-12 lg:p-16 z-10">
             <span className="block w-12 h-px bg-[#F59E0B] mb-6" />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -76,24 +75,24 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right: form */}
-        <div className="px-6 md:px-16 lg:px-20 py-10 md:py-14 flex flex-col justify-center">
+        {/* Right: Form Block Container */}
+        <div className="px-6 md:px-16 lg:px-20 py-12 md:py-16 flex flex-col justify-center bg-[#FAFAF8] lg:bg-white h-full">
           <div className="max-w-xl mx-auto w-full">
-
+            
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="font-clash text-[clamp(1.8rem,3.5vw,2.8rem)] font-500 leading-[1.05] text-[#083A7A] mb-4"
+              className="text-3xl md:text-4xl font-800 leading-tight text-black mb-4"
             >
-              Tell us what{" "}
-              <span className="font-cormorant italic font-400 text-[#D97706]">inspires you.</span>
+              Tell us what <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">inspires you.</span>
             </motion.h2>
+            
             <motion.p
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.2 }}
-              className="text-[#4B5563] text-sm leading-[1.8] mb-8"
+              className="text-[#6B7280] text-sm md:text-base leading-relaxed mb-8 font-normal"
             >
               Culture, food, photography, nature, or simply Kashmir at a slower
               pace — we&apos;d love to craft a journey that&apos;s entirely yours.
@@ -103,16 +102,16 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="border border-[#D97706]/40 p-10 text-center"
+                className="border border-[#D97706]/40 bg-[#FAFAF8] rounded-3xl p-8 text-center shadow-sm"
               >
-                <div className="font-clash text-4xl text-[#D97706] mb-4">✦</div>
-                <h3 className="font-clash text-xl font-500 text-[#083A7A] mb-2">We&apos;ve received your enquiry.</h3>
-                <p className="font-cormorant italic text-[#4B5563] text-base mb-8">
+                <div className="text-4xl text-[#D97706] mb-4">✦</div>
+                <h3 className="text-xl font-800 text-black mb-2">We&apos;ve received your enquiry.</h3>
+                <p className="font-cormorant italic text-gray-500 text-base mb-6">
                   Someone from the team will reach out within 48 hours.
                 </p>
                 <button
                   onClick={reset}
-                  className="font-clash text-[11px] tracking-[0.2em] uppercase px-8 py-3 border border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white transition-all duration-300"
+                  className="text-[11px] tracking-[0.2em] font-700 uppercase px-8 py-3.5 border border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white rounded-full transition-all duration-300 shadow-sm"
                 >
                   Make Another Enquiry
                 </button>
@@ -126,13 +125,13 @@ export default function Contact() {
                 className="flex flex-col gap-5"
               >
                 {/* Name + Email */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-5">
                   {[
-                    { id: "name",  label: "Your Name",  placeholder: "Amir Khan",          type: "text"  },
-                    { id: "email", label: "Email",       placeholder: "amir@example.com",   type: "email" },
+                    { id: "name",  label: "Your Name",  placeholder: "James Wilson",       type: "text"  },
+                    { id: "email", label: "Email",       placeholder: "james@example.com",  type: "email" },
                   ].map(f => (
-                    <div key={f.id} className="flex flex-col gap-1.5">
-                      <label htmlFor={f.id} className="font-clash text-[10px] tracking-[0.25em] uppercase text-[#475569]">
+                    <div key={f.id} className="flex flex-col">
+                      <label htmlFor={f.id} className="text-[10px] tracking-[0.2em] font-700 uppercase text-gray-400 mb-1.5 block">
                         {f.label}
                       </label>
                       <input
@@ -141,15 +140,15 @@ export default function Contact() {
                         type={f.type}
                         placeholder={f.placeholder}
                         required
-                        className="bg-transparent border-b border-[#CBD5E1] focus:border-[#D97706] py-2.5 text-[#1F2937] placeholder-[#9CA3AF] text-sm outline-none transition-colors duration-300"
+                        className="bg-white border border-gray-200 focus:border-black focus:ring-1 focus:ring-black px-4 py-2.5 rounded-2xl text-[#1F2937] placeholder-gray-400 text-sm outline-none transition-all duration-300"
                       />
                     </div>
                   ))}
                 </div>
 
                 {/* Phone */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="phone" className="font-clash text-[10px] tracking-[0.25em] uppercase text-[#475569]">
+                <div className="flex flex-col">
+                  <label htmlFor="phone" className="text-[10px] tracking-[0.2em] font-700 uppercase text-gray-400 mb-1.5 block">
                     Phone Number
                   </label>
                   <input
@@ -158,27 +157,26 @@ export default function Contact() {
                     type="tel"
                     placeholder="+91 98765 43210"
                     required
-                    className="bg-transparent border-b border-[#CBD5E1] focus:border-[#D97706] py-2.5 text-[#1F2937] placeholder-[#9CA3AF] text-sm outline-none transition-colors duration-300"
+                    className="bg-white border border-gray-200 focus:border-black focus:ring-1 focus:ring-black px-4 py-2.5 rounded-2xl text-[#1F2937] placeholder-gray-400 text-sm outline-none transition-all duration-300"
                   />
                 </div>
 
                 {/* Interests */}
                 <div className="flex flex-col gap-2.5">
-                  <span className="font-clash text-[10px] tracking-[0.25em] uppercase text-[#475569]">
+                  <span className="text-[10px] tracking-[0.2em] font-700 uppercase text-gray-400 block">
                     What interests you?
                   </span>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 pt-0.5">
                     {interests.map(item => (
                       <button
                         key={item}
                         type="button"
                         onClick={() => toggle(item)}
-                        className="font-clash text-[10px] tracking-[0.1em] uppercase px-3 py-1.5 border transition-all duration-300"
-                        style={{
-                          borderColor: selected.includes(item) ? "#D97706" : "#CBD5E1",
-                          background:  selected.includes(item) ? "rgba(217,119,6,0.10)" : "transparent",
-                          color:       selected.includes(item) ? "#B45309" : "#475569",
-                        }}
+                        className={`text-[10px] tracking-[0.05em] font-700 uppercase px-3.5 py-1.5 border rounded-full transition-all duration-300 ${
+                          selected.includes(item)
+                            ? "border-black bg-black text-white"
+                            : "border-gray-200 bg-white text-gray-500 hover:border-black hover:text-black"
+                        }`}
                       >
                         {item}
                       </button>
@@ -189,7 +187,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="self-start font-clash text-[12px] tracking-[0.2em] uppercase px-10 py-4 bg-[#D97706] text-white hover:bg-[#F59E0B] disabled:opacity-60 transition-all duration-300 mt-1"
+                  className="self-start text-[11px] tracking-[0.2em] font-700 uppercase px-10 py-3.5 bg-[#D97706] text-white hover:bg-[#F59E0B] rounded-full disabled:opacity-60 transition-all duration-300 mt-2 shadow-sm hover:shadow-md"
                 >
                   {sending ? "Sending…" : "Send Enquiry →"}
                 </button>
@@ -197,6 +195,7 @@ export default function Contact() {
             )}
           </div>
         </div>
+
       </div>
     </section>
   );

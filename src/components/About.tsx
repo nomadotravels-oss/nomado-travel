@@ -11,38 +11,37 @@ export default function About() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section id="about" ref={ref} className="relative bg-white py-32 md:py-48 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-14 md:gap-20 lg:gap-28 items-center">
-        {/* Image */}
-        <div className="md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden">
+    <section id="about" ref={ref} className="relative bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16 lg:gap-24 items-center">
+        
+        {/* Image Column (Balanced 6-column Layout) */}
+        <div className="md:col-span-6 flex flex-col">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_16px_40px_-20px_rgba(0,0,0,0.18)] border border-gray-200/30">
             <motion.div style={{ y: imgY }} className="absolute inset-0 h-[114%] -top-[7%]">
               <Image
                 src={asset("/images/shikara.jpg")}
                 alt="A vendor selling fruit from a shikara on Dal Lake"
                 fill
                 className="object-cover"
-                sizes="(max-width:768px) 100vw, 40vw"
+                sizes="(max-width:768px) 100vw, 50vw"
+                priority
               />
             </motion.div>
-            {/* Caption — clean overlay strip inside the image */}
-            <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#083A7A]/90 via-[#083A7A]/30 to-transparent">
-              <div className="flex items-center gap-3">
-                <span className="block w-8 h-px bg-[#F59E0B]" />
-                <p className="font-cormorant italic text-[#F5F9FD] text-sm">
-                  The floating market of Dal Lake, before sunrise.
-                </p>
-              </div>
-            </div>
           </div>
+          
+          {/* Caption Placed Cleanly Underneath (MySwitzerland Minimalist Style) */}
+          <p className="text-xs text-[#6B7280] mt-4 font-medium italic flex items-center gap-2 px-1">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D97706] shrink-0" />
+            The floating market of Dal Lake, before sunrise.
+          </p>
         </div>
 
-        {/* Text */}
-        <div className="md:col-span-7">
+        {/* Text Column (Balanced 6-column Layout) */}
+        <div className="md:col-span-6 flex flex-col justify-center">
           <motion.span
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            className="font-clash text-[11px] tracking-[0.4em] uppercase text-[#D97706] block mb-10"
+            className="text-[10px] tracking-[0.25em] font-700 text-[#D97706] uppercase block mb-6 md:mb-8"
           >
             01 — About Nomado
           </motion.span>
@@ -51,18 +50,18 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-clash text-[clamp(1.9rem,4vw,3.2rem)] font-500 leading-[1.12] text-[#083A7A] mb-12"
+            className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-[1.15] mb-8"
           >
             Designed around{" "}
-            <span className="font-cormorant italic font-400 text-[#D97706]">experiences</span>,
+            <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">experiences</span>,
             not checklists.
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#374151] text-base md:text-lg leading-[2] max-w-xl mb-10"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="text-[#374151] text-base md:text-lg leading-relaxed mb-6 font-medium"
           >
             The best journeys are not measured by the number of places visited,
             but by the moments that stay with you long after you return home.
@@ -71,8 +70,8 @@ export default function About() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.32 }}
-            className="text-[#4B5563] text-base leading-[2] max-w-xl"
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="text-[#4B5563] text-sm md:text-base leading-relaxed font-normal"
           >
             We create thoughtfully curated experiences that connect travellers
             with Kashmir&apos;s living heritage — its communities, crafts, cuisine,
@@ -81,6 +80,7 @@ export default function About() {
             travellers seek.
           </motion.p>
         </div>
+
       </div>
     </section>
   );

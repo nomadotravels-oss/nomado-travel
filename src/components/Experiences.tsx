@@ -1,8 +1,8 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const experiences = [
   // ── Kashmir ──
@@ -20,116 +20,106 @@ const experiences = [
   { region: "Ladakh",  title: "Gandal Hike",              image: "/images/kargil.jpg",       desc: "High-altitude trek likely toward Ganda La pass, offering rugged Himalayan scenery en route to Markha Valley." },
 ];
 
-function usePerPage() {
-  const [perPage, setPerPage] = useState(3);
-  useEffect(() => {
-    const update = () => setPerPage(window.innerWidth < 768 ? 1 : 3);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return perPage;
-}
-
-function NavBtn({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
-  return (
-    <button onClick={onClick} aria-label={dir} className="w-11 h-11 rounded-full bg-white border border-[#E8EDF3] shadow-md hover:shadow-lg hover:bg-[#D97706] hover:border-[#D97706] text-[#475569] hover:text-white hover:scale-105 transition-all duration-300 flex items-center justify-center">
-      {dir === "prev"
-        ? <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" /></svg>
-        : <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 6l6 6-6 6" /></svg>}
-    </button>
-  );
-}
-
 export default function Experiences() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const [idx, setIdx] = useState(0);
-  const perPage = usePerPage();
-  const total = experiences.length;
-  const shown = Array.from({ length: perPage }, (_, k) => experiences[(idx + k) % total]);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollSlider = (direction: "left" | "right") => {
+    if (sliderRef.current) {
+      const { scrollLeft, clientWidth } = sliderRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      sliderRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <section id="experiences" ref={ref} className="bg-[#FAFAF8] py-12 md:py-16 px-6 md:px-12 lg:px-20">
+    <section id="experiences" ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden font-switzerland">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8 md:mb-10 max-w-2xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-clash text-[clamp(1.8rem,4vw,3.2rem)] font-500 leading-[1.05] text-[#083A7A] mb-3"
-          >
-            The{" "}
-            <span className="font-cormorant italic font-400 text-[#F59E0B]">Nomado</span> Experience.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3 }}
-            className="text-[#4B5563] text-sm md:text-base leading-[1.7]"
-          >
-            Every experience is designed to bring you closer to the heart of the valley — its people, its craft, its silence, and its joy.
-          </motion.p>
+        
+        {/* Header Block with Navigation Controls in Top Right */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 md:mb-16 gap-6">
+          <div className="max-w-2xl font-switzerland">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none"
+            >
+              Experiences
+            </motion.h2>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-2 self-start sm:self-end">
+            <button
+              onClick={() => scrollSlider("left")}
+              className="w-10 h-10 rounded-full border border-gray-255 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm"
+              aria-label="Previous Experiences"
+            >
+              <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10H5M10 15l-5-5 5-5" />
+              </svg>
+            </button>
+            <button
+              onClick={() => scrollSlider("right")}
+              className="w-10 h-10 rounded-full border border-gray-255 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm"
+              aria-label="Next Experiences"
+            >
+              <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 10h10M10 5l5 5-5 5" />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 md:gap-4">
-          <div className="shrink-0">
-            <NavBtn dir="prev" onClick={() => setIdx(i => (i - perPage + total) % total)} />
-          </div>
-          <div className={`flex-1 grid gap-5 md:gap-6 ${perPage === 1 ? "grid-cols-1" : "grid-cols-3"}`}>
-          <AnimatePresence mode="wait">
-            {shown.map((exp, i) => (
-              <motion.article
-                key={`${idx}-${i}`}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.45, delay: i * 0.07 }}
-                className="group relative flex flex-col h-[58vh] overflow-hidden rounded-3xl bg-[#072350] shadow-[0_10px_30px_-12px_rgba(8,58,122,0.35)] hover:shadow-[0_20px_45px_-12px_rgba(8,58,122,0.45)] transition-shadow duration-500"
-              >
-                <div className="relative flex-1 overflow-hidden">
-                  <motion.div
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={asset(exp.image)}
-                      alt={exp.title}
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: exp.pos ?? "center" }}
-                      sizes="(max-width:768px) 100vw, 33vw"
-                    />
-                  </motion.div>
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#072350] to-transparent" />
-                  <span className="absolute top-3 left-3 font-clash font-bold text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 rounded-full bg-white text-[#1F2937]">
-                    {exp.region}
-                  </span>
-                </div>
-                <div className="bg-[#072350] px-5 md:px-6 pb-5 md:pb-6 pt-1">
-                  <h3 className="font-clash text-lg md:text-xl font-700 text-[#F5F9FD] leading-tight mb-2">
+        {/* Continuous Horizontal Scroll Track */}
+        <div
+          ref={sliderRef}
+          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full"
+        >
+          {experiences.map((exp, i) => (
+            <motion.article
+              key={exp.title}
+              initial={{ opacity: 0, x: 40 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex flex-col bg-transparent w-[280px] sm:w-[320px] md:w-[360px] shrink-0 snap-start"
+            >
+              {/* Image Container - Square Aspect Ratio with Overlaid Text */}
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200/40 bg-gray-50 shadow-[0_12px_28px_-16px_rgba(0,0,0,0.12)]">
+                <motion.div
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={asset(exp.image)}
+                    alt={exp.title}
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: exp.pos ?? "center" }}
+                    sizes="(max-width:640px) 280px, (max-width:1024px) 320px, 360px"
+                  />
+                </motion.div>
+                
+                {/* Bottom Dark Gradient Scrim */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+
+                {/* Overlaid Title on Card Bottom-Left */}
+                <div className="absolute bottom-0 left-0 p-5 sm:p-6 w-full text-left pointer-events-none">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-800 text-white font-switzerland tracking-tight leading-tight">
                     {exp.title}
                   </h3>
-                  <p className="text-[#C9D9E8] text-sm md:text-base leading-relaxed">
-                    {exp.desc}
-                  </p>
                 </div>
-              </motion.article>
-            ))}
-          </AnimatePresence>
-          </div>
-          <div className="shrink-0">
-            <NavBtn dir="next" onClick={() => setIdx(i => (i + perPage) % total)} />
-          </div>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-6">
-          {Array.from({ length: Math.ceil(total / perPage) }, (_, p) => (
-            <button key={p} onClick={() => setIdx(p * perPage)} aria-label={`Page ${p + 1}`}
-              className={`h-1 transition-all duration-300 ${Math.floor(idx / perPage) === p ? "w-8 bg-[#D97706]" : "w-4 bg-[#CBD5E1]"}`} />
+              </div>
+            </motion.article>
           ))}
         </div>
+
       </div>
     </section>
   );
