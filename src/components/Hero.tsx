@@ -57,14 +57,6 @@ export default function Hero() {
           Kashmir & Ladakh<span className="text-[#F59E0B]">.</span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="font-cormorant italic text-[clamp(1.1rem,2.2vw,1.6rem)] font-300 text-[#E5EDF5]/90 max-w-xl leading-relaxed mb-10"
-        >
-          Handcrafted journeys designed around experiences, not checklists.
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
