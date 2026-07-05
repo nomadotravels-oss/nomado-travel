@@ -54,13 +54,8 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
         <section className="py-20 md:py-32 px-6 md:px-12 lg:px-20">
           <div className="max-w-7xl mx-auto">
             
-            <div className="mb-16 text-center md:text-left">
-              <h2 className="font-clash text-3xl md:text-4xl font-600 text-[#06172E] mb-4">
-                Explore Our Handcrafted Routes
-              </h2>
-              <p className="text-gray-600 max-w-2xl text-lg md:text-xl">
-                Choose from our carefully curated selection of itineraries or let us customize the perfect journey for your specific needs.
-              </p>
+            <div className="mb-10 text-center md:text-left">
+              {/* Removed text */}
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = ["Destinations", "Experiences", "Journal", "Contact"];
-const linkHrefs: Record<string, string> = { Contact: "#reach-us" };
+const linkHrefs: Record<string, string> = { Contact: "/#contact" };
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function Navbar() {
         }`}
       >
         {/* Brand */}
-        <a href="#" className="text-[1.15rem] md:text-[1.3rem] tracking-wide select-none">
+        <a href="/" className="text-[1.15rem] md:text-[1.3rem] tracking-wide select-none">
           <span className="font-century-bold text-[#F59E0B]">nomado</span><span className="font-century text-[#F5F9FD]">.travel</span>
         </a>
 
@@ -43,7 +43,7 @@ export default function Navbar() {
           {links.map(link => (
             <a
               key={link}
-              href={linkHrefs[link] ?? `#${link.toLowerCase()}`}
+              href={linkHrefs[link] ?? `/#${link.toLowerCase()}`}
               className={`font-clash text-[12px] tracking-[0.2em] uppercase transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-[#F59E0B] hover:after:w-full after:transition-all after:duration-300 ${
                 scrolled ? "text-[#C9D9E8] hover:text-[#F5F9FD]" : "text-white/90 hover:text-white"
               }`}
@@ -52,7 +52,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             className={`font-clash text-[12px] tracking-[0.18em] uppercase px-6 py-2.5 border rounded-full transition-all duration-500 ${
               scrolled
                 ? "border-[#F59E0B]/40 text-[#F59E0B] hover:bg-[#F59E0B] hover:text-white hover:border-[#F59E0B]"
@@ -83,7 +83,7 @@ export default function Navbar() {
             {links.map((link, i) => (
               <motion.a
                 key={link}
-                href={linkHrefs[link] ?? `#${link.toLowerCase()}`}
+                href={linkHrefs[link] ?? `/#${link.toLowerCase()}`}
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
