@@ -88,9 +88,6 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
             
             {/* Left Col: Description & Highlights */}
             <div className="w-full lg:w-2/3">
-              <h2 className="font-clash text-3xl md:text-4xl font-600 text-[#06172E] mb-8">
-                About {destination.name}
-              </h2>
               <div className="text-gray-600 text-lg leading-relaxed mb-12">
                 {destination.longDesc}
               </div>
