@@ -6,7 +6,7 @@ import { regionItineraries } from "@/data/itineraries";
 import { asset } from "@/lib/asset";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookNowButton from "@/components/BookNowButton";
+import WeatherWidget from "@/components/WeatherWidget";
 
 export function generateStaticParams() {
   const params: { region: string; id: string }[] = [];
@@ -70,10 +70,13 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
                 </p>
               </div>
               <div className="shrink-0">
-                <BookNowButton 
-                  itineraryName={`Trip to ${destination.name}`} 
-                  className="inline-block bg-white hover:bg-[#F59E0B] text-[#06172E] px-10 py-5 rounded-full font-700 text-lg transition-colors duration-300 shadow-xl"
-                />
+                {destination.coordinates && (
+                  <WeatherWidget 
+                    lat={destination.coordinates.lat} 
+                    lng={destination.coordinates.lng} 
+                    name={destination.name} 
+                  />
+                )}
               </div>
             </div>
           </div>
