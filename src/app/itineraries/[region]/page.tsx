@@ -38,7 +38,7 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06172E] via-[#06172E]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06172E] via-[#06172E]/60 to-[#06172E]/80" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto w-full text-white">
             <span className="text-[12px] md:text-[14px] tracking-[0.2em] font-700 text-[#F59E0B] uppercase mb-4 block">

@@ -5,6 +5,7 @@ import { regionItineraries } from "@/data/itineraries";
 import { asset } from "@/lib/asset";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookNowButton from "@/components/BookNowButton";
 
 export function generateStaticParams() {
   const params: { region: string; id: string }[] = [];
@@ -46,7 +47,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06172E] via-[#06172E]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06172E] via-[#06172E]/40 to-[#06172E]/80" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto w-full text-white">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -62,9 +63,10 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
                 </p>
               </div>
               <div className="shrink-0">
-                <Link href="/#contact" className="inline-block bg-white hover:bg-[#F59E0B] text-[#06172E] px-10 py-5 rounded-full font-700 text-lg transition-colors duration-300 shadow-xl">
-                  Enquire Now
-                </Link>
+                <BookNowButton 
+                  itineraryName={itinerary.name} 
+                  className="inline-block bg-white hover:bg-[#F59E0B] text-[#06172E] px-10 py-5 rounded-full font-700 text-lg transition-colors duration-300 shadow-xl"
+                />
               </div>
             </div>
           </div>
@@ -150,9 +152,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
                 <p className="text-white/80 mb-8">
                   Get in touch with our experts to customize this itinerary to your exact preferences.
                 </p>
-                <Link href="/#contact" className="block text-center bg-[#F59E0B] hover:bg-white text-[#06172E] w-full py-4 rounded-xl font-700 transition-colors duration-300">
-                  Request a Quote
-                </Link>
+                <BookNowButton itineraryName={itinerary.name} />
               </div>
 
             </div>
