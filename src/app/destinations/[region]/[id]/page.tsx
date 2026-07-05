@@ -45,7 +45,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
       <main className="font-switzerland bg-[#F5F9FD] min-h-screen pb-20">
         
         {/* Hero Section */}
-        <section className="relative min-h-[60vh] md:min-h-0 md:h-[70vh] flex flex-col justify-end pt-28 pb-12 px-6 md:px-12 lg:px-20">
+        <section className="relative min-h-[50vh] md:min-h-0 md:h-[55vh] flex flex-col justify-end pt-28 pb-10 px-6 md:px-12 lg:px-20">
           <div className="absolute inset-0 z-0 rounded-b-[2.5rem] overflow-hidden">
             <Image
               src={asset(destination.image)}
