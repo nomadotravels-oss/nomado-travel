@@ -29,7 +29,7 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
       <main className="font-switzerland bg-[#F5F9FD] min-h-screen">
         
         {/* Hero Banner for Region */}
-        <section className="relative h-[50vh] md:h-[60vh] flex items-end pb-12 px-6 md:px-12 lg:px-20">
+        <section className="relative h-[40vh] md:h-[48vh] flex items-end pb-12 px-6 md:px-12 lg:px-20">
           <div className="absolute inset-0 z-0">
             <Image
               src={asset(regionData.heroImage)}
@@ -51,12 +51,8 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
         </section>
 
         {/* Itineraries List */}
-        <section className="py-20 md:py-32 px-6 md:px-12 lg:px-20">
+        <section className="pt-10 pb-20 md:pt-16 md:pb-32 px-6 md:px-12 lg:px-20">
           <div className="max-w-7xl mx-auto">
-            
-            <div className="mb-10 text-center md:text-left">
-              {/* Removed text */}
-            </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {regionData.itineraries.map((itinerary) => (
