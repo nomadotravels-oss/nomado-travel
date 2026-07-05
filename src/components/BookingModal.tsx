@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -17,6 +18,11 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
     phone: "",
     dateOfTravel: ""
   });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handlePayNow = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,12 +30,14 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
   };
 
   const handleClose = () => {
-    setStep(1); // reset state
+    setStep(1);
     setFormData({ fullName: "", email: "", phone: "", dateOfTravel: "" });
     onClose();
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -160,6 +168,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
           </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
