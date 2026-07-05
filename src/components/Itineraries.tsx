@@ -1,21 +1,24 @@
 "use client";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { asset } from "@/lib/asset";
 
+const MotionLink = motion(Link);
+
 const itineraries = [
   {
-    id: "kashmir-itinerary",
-    name: "Classic Kashmir",
-    duration: "5 Days / 4 Nights",
+    id: "kashmir",
+    name: "Kashmir",
+    duration: "View 5 Itineraries",
     desc: "A perfect introduction to the valley, covering Srinagar's lakes, Gulmarg's meadows, and Pahalgam's pristine valleys.",
     image: "/images/kashmir-tile.jpg",
   },
   {
-    id: "ladakh-itinerary",
-    name: "Ladakh Explorer",
-    duration: "7 Days / 6 Nights",
+    id: "ladakh",
+    name: "Ladakh",
+    duration: "View 5 Itineraries",
     desc: "Journey through high passes, ancient monasteries, the dunes of Nubra Valley, and the vast Pangong Lake.",
     image: "/images/ladakh.jpg",
   }
@@ -44,9 +47,9 @@ export default function Itineraries() {
         {/* Cards Grid */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {itineraries.map((itinerary, index) => (
-            <motion.a
+            <MotionLink
               key={itinerary.id}
-              href="#contact"
+              href={`/itineraries/${itinerary.id}`}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -67,7 +70,7 @@ export default function Itineraries() {
                   />
                 </motion.div>
 
-                {/* Gradient matching Destinations */}
+                {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06172E]/95 via-[#06172E]/30 to-[#06172E]/10 group-hover:from-[#06172E]/[0.98] transition-all duration-700" />
 
                 <div className="absolute top-6 right-6 lg:top-8 lg:right-8 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
@@ -93,7 +96,7 @@ export default function Itineraries() {
                   </div>
                 </div>
               </div>
-            </motion.a>
+            </MotionLink>
           ))}
         </div>
 
