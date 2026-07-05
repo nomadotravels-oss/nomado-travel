@@ -26,10 +26,10 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
   return (
     <>
       <Navbar />
-      <main className="font-switzerland bg-[#F5F9FD] min-h-screen pt-24">
+      <main className="font-switzerland bg-[#F5F9FD] min-h-screen">
         
         {/* Hero Banner for Region */}
-        <section className="relative h-[40vh] md:h-[50vh] flex items-end pb-12 px-6 md:px-12 lg:px-20 mt-10 md:mt-0">
+        <section className="relative h-[50vh] md:h-[60vh] flex items-end pb-12 px-6 md:px-12 lg:px-20">
           <div className="absolute inset-0 z-0">
             <Image
               src={asset(regionData.heroImage)}

@@ -35,10 +35,10 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
   return (
     <>
       <Navbar />
-      <main className="font-switzerland bg-[#F5F9FD] min-h-screen pt-24 pb-20">
+      <main className="font-switzerland bg-[#F5F9FD] min-h-screen pb-20">
         
         {/* Hero Section */}
-        <section className="relative h-[50vh] md:h-[65vh] flex flex-col justify-end pb-12 px-6 md:px-12 lg:px-20 mt-10 md:mt-0">
+        <section className="relative h-[55vh] md:h-[70vh] flex flex-col justify-end pb-12 px-6 md:px-12 lg:px-20">
           <div className="absolute inset-0 z-0 rounded-b-[2.5rem] overflow-hidden">
             <Image
               src={asset(itinerary.image)}
