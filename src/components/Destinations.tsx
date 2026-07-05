@@ -1,41 +1,10 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { asset } from "@/lib/asset";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-
-const regions = [
-  {
-    id: "kashmir",
-    name: "Kashmir",
-    tagline: "The Valley of Valleys",
-    desc: "Houseboats on Dal Lake, saffron fields, Mughal gardens, and mountains that touch the clouds.",
-    image: "/images/kashmir-tile.jpg",
-    destinations: [
-      { name: "Gulmarg", desc: "Ski slopes & alpine meadows", image: "/images/gulmarg.jpg" },
-      { name: "Pahalgam", desc: "The shepherd's meadow", image: "/images/pahalgam.jpg" },
-      { name: "Sonmarg", desc: "Gateway to the glaciers", image: "/images/sonmarg.jpg" },
-      { name: "Srinagar", desc: "Houseboats & walled city", image: "/images/houses-lake.jpg" },
-      { name: "Doodhpathri", desc: "Untouched rolling meadows", image: "/images/doodhpathri.jpg" },
-      { name: "Yousmarg", desc: "Pine forests & wildflowers", image: "/images/yousmarg.jpg" },
-    ],
-  },
-  {
-    id: "ladakh",
-    name: "Ladakh",
-    tagline: "The Land of High Passes",
-    desc: "Moonscapes, monasteries, turquoise lakes, and a silence that recalibrates something deep inside you.",
-    image: "/images/ladakh.jpg",
-    destinations: [
-      { name: "Leh", desc: "Ancient monasteries under cobalt skies", image: "/images/leh.jpg" },
-      { name: "Kargil", desc: "Where cultures converge", image: "/images/kargil.jpg" },
-      { name: "Nubra Valley", desc: "Sand dunes & Bactrian camels", image: "/images/nubra.jpg" },
-      { name: "Turtuk", desc: "A Balti village at the edge of the world", image: "/images/turtuk.jpg" },
-      { name: "Pangong", desc: "The highest saltwater lake", image: "/images/pangong.jpg" },
-      { name: "Hanle", desc: "Dark skies & ancient monastery", image: "/images/hanle.jpg" },
-    ],
-  },
-];
+import { regions } from "@/data/destinations";
 
 type Region = typeof regions[0];
 
@@ -154,14 +123,17 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
           className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full"
         >
           {region.destinations.map((dest, i) => (
-            <motion.div
+            <Link
               key={dest.name}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="group/card relative overflow-hidden rounded-2xl shadow-[0_12px_32px_-16px_rgba(0,0,0,0.18)] bg-gray-50 border border-gray-200/30 w-[280px] sm:w-[320px] md:w-[360px] shrink-0 snap-start"
+              href={`/destinations/${region.id}/${dest.id}`}
+              className="group/card relative overflow-hidden rounded-2xl shadow-[0_12px_32px_-16px_rgba(0,0,0,0.18)] bg-gray-50 border border-gray-200/30 w-[280px] sm:w-[320px] md:w-[360px] shrink-0 snap-start block"
             >
-              <div className="relative aspect-square overflow-hidden rounded-2xl w-full">
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.55, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="relative aspect-square overflow-hidden rounded-2xl w-full"
+              >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -185,8 +157,8 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
                     {dest.name}
                   </h4>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
