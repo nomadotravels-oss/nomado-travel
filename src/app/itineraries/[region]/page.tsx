@@ -63,56 +63,55 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
               </p>
             </div>
 
-            <div className="flex flex-col gap-12 md:gap-16">
-              {regionData.itineraries.map((itinerary, i) => (
-                <div key={itinerary.id} className="flex flex-col md:flex-row gap-8 lg:gap-12 bg-white rounded-3xl p-6 md:p-8 shadow-[0_12px_40px_-16px_rgba(0,0,0,0.1)] group">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {regionData.itineraries.map((itinerary) => (
+                <div key={itinerary.id} className="relative w-full h-[500px] md:h-[600px] rounded-3xl overflow-hidden group shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] block">
                   
-                  {/* Image */}
-                  <div className="relative w-full md:w-[40%] lg:w-[45%] h-[300px] md:h-auto md:min-h-[350px] overflow-hidden rounded-2xl shrink-0">
-                    <Image
-                      src={asset(itinerary.image)}
-                      alt={itinerary.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full">
-                      <span className="text-xs font-700 tracking-wider text-[#06172E] uppercase">
-                        {itinerary.duration}
-                      </span>
-                    </div>
+                  {/* Image Background */}
+                  <Image
+                    src={asset(itinerary.image)}
+                    alt={itinerary.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  
+                  {/* Gradient Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#06172E]/95 via-[#06172E]/40 to-[#06172E]/10 group-hover:from-[#06172E]/[0.98] transition-all duration-700" />
+                  
+                  {/* Duration Tag */}
+                  <div className="absolute top-6 right-6 lg:top-8 lg:right-8 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <span className="text-[11px] md:text-[13px] tracking-[0.1em] font-600 text-white uppercase shadow-sm">
+                      {itinerary.duration}
+                    </span>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex flex-col justify-center w-full md:w-[60%] lg:w-[55%] py-2 md:py-6">
-                    <h3 className="font-clash text-2xl md:text-4xl font-600 text-black mb-4">
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10 lg:p-12">
+                    <h3 className="font-clash text-3xl md:text-4xl font-600 text-white mb-4">
                       {itinerary.name}
                     </h3>
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8">
+                    <p className="text-white/80 font-switzerland text-base md:text-lg leading-relaxed line-clamp-3 mb-6">
                       {itinerary.desc}
                     </p>
                     
-                    <div className="mb-8">
-                      <h4 className="text-sm font-700 tracking-widest text-gray-400 uppercase mb-4">
-                        Key Highlights
-                      </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {itinerary.highlights.map((highlight, idx) => (
-                          <li key={idx} className="flex items-center gap-3 text-gray-700 font-500">
-                            <svg className="w-5 h-5 text-[#F59E0B] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {highlight}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
+                      {itinerary.highlights.slice(0, 4).map((highlight, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-white/90 text-sm font-500">
+                          <svg className="w-4 h-4 text-[#F59E0B] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
 
-                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
-                      <Link href="/#contact" className="inline-flex items-center gap-3 bg-[#06172E] hover:bg-[#F59E0B] text-white px-8 py-4 rounded-full font-600 transition-colors duration-300">
-                        Enquire Now
-                      </Link>
-                      <span className="text-sm text-gray-400 font-500">Customizable</span>
-                    </div>
+                    <Link href={`/itineraries/${regionKey}/${itinerary.id}`} className="inline-flex items-center justify-center gap-3 bg-[#F59E0B] hover:bg-white text-[#06172E] w-full py-4 rounded-xl font-700 transition-colors duration-300">
+                      View Trip
+                      <svg viewBox="0 0 32 24" className="w-6 h-5 shrink-0 transition-transform duration-500 group-hover:translate-x-1.5" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h24M19 5l8 7-8 7" />
+                      </svg>
+                    </Link>
                   </div>
 
                 </div>
