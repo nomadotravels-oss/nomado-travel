@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Destinations from "@/components/Destinations";
+import Itineraries from "@/components/Itineraries";
 import Experiences from "@/components/Experiences";
 import Testimonials from "@/components/Testimonials";
 import Journal from "@/components/Journal";
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <Destinations />
+        <Itineraries />
         <Experiences />
         <Testimonials />
         <Journal />
