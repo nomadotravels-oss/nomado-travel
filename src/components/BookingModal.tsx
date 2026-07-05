@@ -39,11 +39,11 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 z-[60] bg-[#06172E]/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-[#06172E]/70 backdrop-blur-md"
           />
 
           {/* Modal Container */}
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-6 pointer-events-none">
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 md:p-6 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                         type="text" 
                         value={formData.fullName}
                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
                         placeholder="John Doe"
                       />
                     </div>
@@ -91,7 +91,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                         type="email" 
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -102,7 +102,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                         type="tel" 
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all"
                         placeholder="+91 98765 43210"
                       />
                     </div>
