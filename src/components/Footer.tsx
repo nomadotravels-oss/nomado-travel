@@ -1,4 +1,8 @@
+"use client";
+import { useState } from "react";
+
 export default function Footer() {
+  const [isPermitOpen, setIsPermitOpen] = useState(false);
   return (
     <footer id="reach-us" className="bg-[#083A7A] border-t border-[#0F4C9C]/50 px-6 md:px-12 lg:px-20 py-16 md:py-20 scroll-mt-20 font-switzerland text-white">
       <div className="max-w-7xl mx-auto">
@@ -92,26 +96,27 @@ export default function Footer() {
             href="https://etickets.jammukashmircablecar.com/Ticket/Login.aspx"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-white/20 text-white/80 bg-white/5 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
+            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-white/20 text-white/80 bg-white/5 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto whitespace-nowrap"
           >
             Book Gondola Tickets
           </a>
-          <a
-            href="https://www.lahdclehpermit.in/register-as-domestic"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-white/5 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
-          >
-            Ladakh Permit (Indian)
-          </a>
-          <a
-            href="https://www.lahdclehpermit.in/register-as-overseas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-white/5 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
-          >
-            Ladakh Permit (Foreign)
-          </a>
+          
+          <div className="relative w-full sm:w-auto">
+            <button
+              onClick={() => setIsPermitOpen(!isPermitOpen)}
+              className="flex items-center justify-center gap-2 text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-white/5 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 w-full whitespace-nowrap"
+            >
+              Ladakh Inner Line Permit
+              <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isPermitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+            </button>
+
+            {isPermitOpen && (
+              <div className="absolute bottom-full left-0 right-0 mb-3 bg-[#083A7A]/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+                <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-domestic" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider border-b border-white/5 transition-colors">Indian Traveller</a>
+                <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-overseas" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider transition-colors">Overseas Traveller</a>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Bottom copyright */}
