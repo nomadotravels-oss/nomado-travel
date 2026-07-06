@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { asset } from "@/lib/asset";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -9,6 +9,7 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const scrimOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.45]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const [isPermitOpen, setIsPermitOpen] = useState(false);
 
   return (
     <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#06172E] font-switzerland">
@@ -52,10 +53,44 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(2.6rem,7.5vw,5.5rem)] font-800 text-[#F5F9FD] tracking-tight leading-[1.05] mb-6"
+          className="text-[clamp(2.6rem,7.5vw,5.5rem)] font-800 text-[#F5F9FD] tracking-tight leading-[1.05] mb-10"
         >
           Kashmir & Ladakh<span className="text-[#F59E0B]">.</span>
         </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto"
+        >
+          <a
+            href="https://etickets.jammukashmircablecar.com/Ticket/Login.aspx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-300 backdrop-blur-md w-full md:w-auto"
+          >
+            Book Gondola Tickets
+          </a>
+          
+          <div className="relative w-full md:w-auto">
+            <button
+              onClick={() => setIsPermitOpen(!isPermitOpen)}
+              onBlur={() => setTimeout(() => setIsPermitOpen(false), 200)}
+              className="flex items-center justify-center gap-2 text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-[#F59E0B]/50 text-[#F59E0B] bg-[#F59E0B]/10 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 backdrop-blur-md w-full"
+            >
+              Ladakh Inner Line Permit
+              <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isPermitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+            </button>
+
+            {isPermitOpen && (
+              <div className="absolute top-full left-0 right-0 mt-3 bg-[#06172E]/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+                <a href="https://www.lahdclehpermit.in/register-as-domestic" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider border-b border-white/5 transition-colors">Indian Traveller</a>
+                <a href="https://www.lahdclehpermit.in/register-as-overseas" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider transition-colors">Overseas Traveller</a>
+              </div>
+            )}
+          </div>
+        </motion.div>
 
 
 
