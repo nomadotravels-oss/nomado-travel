@@ -10,12 +10,13 @@ type Region = typeof regions[0];
 
 function RegionTile({ region, onClick, inView, delay }: { region: Region; onClick: () => void; inView: boolean; delay: number }) {
   return (
-    <motion.button
+    <motion.a
+      href={`/itineraries/${region.id}/`}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      onClick={onClick}
-      className="relative w-full text-left group overflow-hidden rounded-3xl shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] focus:outline-none"
+      onClick={(e) => { e.preventDefault(); onClick(); }}
+      className="relative w-full text-left group overflow-hidden rounded-3xl shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] focus:outline-none block"
     >
       <div className="relative h-[44vh] md:h-[52vh] overflow-hidden rounded-3xl">
         <motion.div
@@ -41,7 +42,7 @@ function RegionTile({ region, onClick, inView, delay }: { region: Region; onClic
           </div>
         </div>
       </div>
-    </motion.button>
+    </motion.a>
   );
 }
 

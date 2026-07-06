@@ -25,6 +25,7 @@ export default function Contact() {
       name:      (form.elements.namedItem("name")  as HTMLInputElement).value,
       email:     (form.elements.namedItem("email") as HTMLInputElement).value,
       phone:     (form.elements.namedItem("phone") as HTMLInputElement).value,
+      message:   (form.elements.namedItem("message") as HTMLTextAreaElement).value,
       interests: selected.join(", "),
       timestamp: new Date().toISOString(),
     };
@@ -182,6 +183,20 @@ export default function Contact() {
                       </button>
                     ))}
                   </div>
+                </div>
+
+                {/* Message */}
+                <div className="flex flex-col">
+                  <label htmlFor="message" className="text-[10px] tracking-[0.2em] font-700 uppercase text-gray-400 mb-1.5 block">
+                    Tell Us About Your Trip <span className="normal-case tracking-normal font-400 text-gray-300">(optional)</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    placeholder="E.g. We're a group of 4 arriving on Aug 15, interested in Gulmarg + Pahalgam for 5 days…"
+                    className="bg-white border border-gray-200 focus:border-black focus:ring-1 focus:ring-black px-4 py-2.5 rounded-2xl text-[#1F2937] placeholder-gray-400 text-sm outline-none transition-all duration-300 resize-none"
+                  />
                 </div>
 
                 <button

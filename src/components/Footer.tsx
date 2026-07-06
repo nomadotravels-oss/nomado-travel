@@ -21,13 +21,18 @@ export default function Footer() {
           <div>
             <span className="text-[10px] tracking-[0.25em] font-700 uppercase text-[#F59E0B] mb-4 block">Navigate</span>
             <ul className="flex flex-col gap-3">
-              {["Experiences", "About", "Journal", "Plan Your Journey"].map(link => (
-                <li key={link}>
+              {[
+                { label: "Destinations", href: "/#destinations" },
+                { label: "Experiences", href: "/#experiences" },
+                { label: "Journal", href: "/#journal" },
+                { label: "Contact", href: "/#contact" },
+              ].map(link => (
+                <li key={link.label}>
                   <a
-                    href={`#${link.toLowerCase().replace(/ /g, "-")}`}
+                    href={link.href}
                     className="text-[11px] tracking-[0.15em] font-700 uppercase text-[#B6C6DD] hover:text-white transition-colors duration-300"
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
