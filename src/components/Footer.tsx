@@ -26,15 +26,10 @@ export default function Footer() {
                 { label: "Experiences", href: "/#experiences" },
                 { label: "Journal", href: "/#journal" },
                 { label: "Contact", href: "/#contact" },
-                { label: "Gondola Tickets", href: "https://etickets.jammukashmircablecar.com/Ticket/Login.aspx", target: "_blank" },
-                { label: "Permit (Indian)", href: "https://www.lahdclehpermit.in/register-as-domestic", target: "_blank" },
-                { label: "Permit (Foreign)", href: "https://www.lahdclehpermit.in/register-as-overseas", target: "_blank" },
               ].map(link => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    target={link.target}
-                    rel={link.target ? "noopener noreferrer" : undefined}
                     className="text-[11px] tracking-[0.15em] font-700 uppercase text-[#B6C6DD] hover:text-white transition-colors duration-300"
                   >
                     {link.label}
@@ -89,6 +84,34 @@ export default function Footer() {
             </p>
           </div>
 
+        </div>
+
+        {/* Travel Resources Buttons */}
+        <div className="border-t border-[#0F4C9C]/40 pt-10 pb-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://etickets.jammukashmircablecar.com/Ticket/Login.aspx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-white/20 text-white/80 bg-white/5 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
+          >
+            Book Gondola Tickets
+          </a>
+          <a
+            href="https://www.lahdclehpermit.in/register-as-domestic"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-white/5 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
+          >
+            Ladakh Permit (Indian)
+          </a>
+          <a
+            href="https://www.lahdclehpermit.in/register-as-overseas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-white/5 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 w-full sm:w-auto"
+          >
+            Ladakh Permit (Foreign)
+          </a>
         </div>
 
         {/* Bottom copyright */}
