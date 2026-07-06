@@ -1,17 +1,17 @@
 "use client";
-import { useRef } from"react";
-import Image from"next/image";
-import Link from"next/link";
-import { asset } from"@/lib/asset";
-import { posts } from"@/lib/journal";
-import { motion, useInView } from"framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { asset } from "@/lib/asset";
+import { posts } from "@/lib/journal";
+import { motion, useInView } from "framer-motion";
 
 export default function Journal() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="journal" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20">
+    <section id="journal" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -22,7 +22,7 @@ export default function Journal() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none"
           >
-            Stories from <span className="italic font-400 text-[#D97706] tracking-normal">the valley.</span>
+            Stories from <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">the valley.</span>
           </motion.h2>
         </div>
 
@@ -30,17 +30,17 @@ export default function Journal() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10">
           {posts.map((post, idx) => {
             // Configure layout properties based on index to create a beautiful collage
-            let colSpanClass ="lg:col-span-4 sm:col-span-1";
-            let aspectClass ="aspect-[4/3]";
-            let titleClass ="text-lg md:text-xl";
-            let sizes ="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
+            let colSpanClass = "lg:col-span-4 sm:col-span-1";
+            let aspectClass = "aspect-[4/3]";
+            let titleClass = "text-lg md:text-xl";
+            let sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
 
             if (idx === 0) {
               // First post - Large Featured
-              colSpanClass ="lg:col-span-8 sm:col-span-2";
-              aspectClass ="aspect-[16/10]";
-              titleClass ="text-xl md:text-2xl lg:text-3xl";
-              sizes ="(max-width: 1024px) 100vw, 66vw";
+              colSpanClass = "lg:col-span-8 sm:col-span-2";
+              aspectClass = "aspect-[16/10]";
+              titleClass = "text-xl md:text-2xl lg:text-3xl";
+              sizes = "(max-width: 1024px) 100vw, 66vw";
             }
 
             return (
@@ -70,7 +70,7 @@ export default function Journal() {
                   </div>
 
                   {/* Text block underneath */}
-                  <div className="pt-2 flex flex-col items-start px-1">
+                  <div className="pt-2 flex flex-col items-start px-1 font-switzerland">
                     <span className="text-[10px] tracking-[0.2em] font-700 text-[#D97706] uppercase mb-1.5 block">
                       {post.region}
                     </span>

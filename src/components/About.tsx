@@ -1,17 +1,17 @@
 "use client";
-import { useRef } from"react";
-import Image from"next/image";
-import { asset } from"@/lib/asset";
-import { motion, useScroll, useTransform, useInView } from"framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin:"-120px" });
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end","end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-6%","6%"]);
+  const inView = useInView(ref, { once: true, margin: "-120px" });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section id="about" ref={ref} className="relative bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20">
+    <section id="about" ref={ref} className="relative bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
       <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16 lg:gap-24 items-center">
         
         {/* Image Column (Balanced 6-column Layout) */}
@@ -52,8 +52,8 @@ export default function About() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-[1.15] mb-8"
           >
-            Designed around{""}
-            <span className="italic font-400 text-[#D97706] tracking-normal">experiences</span>,
+            Designed around{" "}
+            <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">experiences</span>,
             not checklists.
           </motion.h2>
 

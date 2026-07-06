@@ -1,11 +1,11 @@
-import Link from"next/link";
-import Image from"next/image";
-import { notFound } from"next/navigation";
-import Navbar from"@/components/Navbar";
-import Footer from"@/components/Footer";
-import { asset } from"@/lib/asset";
-import { posts, getPost } from"@/lib/journal";
-import type { Metadata } from"next";
+import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { asset } from "@/lib/asset";
+import { posts, getPost } from "@/lib/journal";
+import type { Metadata } from "next";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -26,7 +26,7 @@ export default async function JournalPost({ params }: { params: Promise<{ slug: 
   return (
     <>
       <Navbar />
-      <main className="bg-white">
+      <main className="bg-white font-switzerland">
         {/* Hero image */}
         <div className="relative h-[52vh] md:h-[60vh] w-full overflow-hidden">
           <Image src={asset(post.image)} alt={post.title} fill priority className="object-cover" />
@@ -34,7 +34,7 @@ export default async function JournalPost({ params }: { params: Promise<{ slug: 
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-3xl mx-auto w-full px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
               <span className="text-[10px] tracking-[0.25em] font-700 uppercase text-[#F59E0B]">{post.region}</span>
-              <h1 className="text-[clamp(1.9rem,4.5vw,3.4rem)] font-800 text-[#F5F9FD] leading-tight mt-3" style={{ textShadow:"0 2px 16px rgba(0,0,0,0.6)" }}>
+              <h1 className="text-[clamp(1.9rem,4.5vw,3.4rem)] font-800 text-[#F5F9FD] leading-tight mt-3" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.6)" }}>
                 {post.title}
               </h1>
             </div>
@@ -49,9 +49,9 @@ export default async function JournalPost({ params }: { params: Promise<{ slug: 
           </Link>
 
           {post.body.map((block, i) => {
-            if (block.type ==="h")
+            if (block.type === "h")
               return <h2 key={i} className="text-xl md:text-2xl font-800 text-black mt-10 mb-4 leading-snug">{block.text}</h2>;
-            if (block.type ==="list")
+            if (block.type === "list")
               return (
                 <ul key={i} className="list-disc pl-5 space-y-3 mb-6 text-[#374151] text-[15px] md:text-base leading-[1.8]">
                   {block.items.map((item, j) => <li key={j}>{item}</li>)}

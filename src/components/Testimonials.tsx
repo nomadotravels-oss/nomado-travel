@@ -1,12 +1,12 @@
 "use client";
-import { useRef, useState, useEffect } from"react";
-import { motion, useInView, AnimatePresence } from"framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 const testimonials = [
-  { quote:"We had a lovely experience in Kashmir.. From hotel to pick up, the driver and food, everything was taken utmost care. We just decided 2 days ahead of travelling and Nomado gave us a very good package !! Thanks for making our trip a memorable one !! Will surely recommend friends and relatives.", name:"Fatima Em",          place:"Mangalore, India"  },
-  { quote:"The team's attentiveness and commitment to customer satisfaction truly set them apart. We highly recommend their services for anyone planning a trip to Kashmir or anywhere else!",                                                                                                                       name:"Japnam Kaur Bindra", place:"Delhi, India"      },
-  { quote:"Traveling in Kashmir can be challenging due to unpredictable weather and road conditions, but with nomado.travel, we felt completely at ease and entire family including my kids were comfortable.",                                                                                                       name:"Pranesh Panoli",     place:"Kerala, India"     },
-  { quote:"Kashmir is definitely a beautiful place and can be enjoyed only through these kind of people who keeps customer experience as their top priority.",                                                                                                                                                        name:"Jithin Jawahar",     place:"Hyderabad, India"  },
+  { quote: "We had a lovely experience in Kashmir.. From hotel to pick up, the driver and food, everything was taken utmost care. We just decided 2 days ahead of travelling and Nomado gave us a very good package !! Thanks for making our trip a memorable one !! Will surely recommend friends and relatives.", name: "Fatima Em",          place: "Mangalore, India"  },
+  { quote: "The team's attentiveness and commitment to customer satisfaction truly set them apart. We highly recommend their services for anyone planning a trip to Kashmir or anywhere else!",                                                                                                                       name: "Japnam Kaur Bindra", place: "Delhi, India"      },
+  { quote: "Traveling in Kashmir can be challenging due to unpredictable weather and road conditions, but with nomado.travel, we felt completely at ease and entire family including my kids were comfortable.",                                                                                                       name: "Pranesh Panoli",     place: "Kerala, India"     },
+  { quote: "Kashmir is definitely a beautiful place and can be enjoyed only through these kind of people who keeps customer experience as their top priority.",                                                                                                                                                        name: "Jithin Jawahar",     place: "Hyderabad, India"  },
 ];
 
 function Stars() {
@@ -21,10 +21,10 @@ function Stars() {
   );
 }
 
-function NavBtn({ dir, onClick }: { dir:"prev" |"next"; onClick: () => void }) {
+function NavBtn({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
   return (
     <button onClick={onClick} aria-label={dir} className="w-10 h-10 rounded-full border border-gray-250 flex items-center justify-center text-black bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm">
-      {dir ==="prev"
+      {dir === "prev"
         ? <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10H5M10 15l-5-5 5-5" /></svg>
         : <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 10h10M10 5l5 5-5 5" /></svg>}
     </button>
@@ -44,7 +44,7 @@ function usePerPage() {
 
 export default function Testimonials() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [page, setPage] = useState(0);
   const perPage = usePerPage();
   const pageCount = Math.ceil(testimonials.length / perPage);
@@ -52,19 +52,19 @@ export default function Testimonials() {
   const shown = testimonials.slice(safePage * perPage, safePage * perPage + perPage);
 
   return (
-    <section ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20">
+    <section ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Block with Navigation Controls in Top Right */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 md:mb-16 gap-6">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl font-switzerland">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none"
             >
-              Words from <span className="italic font-400 text-[#D97706] tracking-normal">our travellers.</span>
+              Words from <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">our travellers.</span>
             </motion.h2>
           </div>
 
@@ -77,7 +77,7 @@ export default function Testimonials() {
 
         {/* Testimonials Grid Row */}
         <div className="flex items-center gap-3 md:gap-4">
-          <div className={`flex-1 grid gap-6 md:gap-8 ${perPage === 1 ?"grid-cols-1" :"grid-cols-3"}`}>
+          <div className={`flex-1 grid gap-6 md:gap-8 ${perPage === 1 ? "grid-cols-1" : "grid-cols-3"}`}>
           <AnimatePresence mode="wait">
             {shown.map((t, i) => (
               <motion.figure key={`t-${safePage}-${i}`}
@@ -101,7 +101,7 @@ export default function Testimonials() {
                   </div>
 
                   {/* Quote Body */}
-                  <blockquote className="italic text-gray-700 text-base md:text-lg leading-relaxed">
+                  <blockquote className="font-cormorant italic text-gray-700 text-base md:text-lg leading-relaxed">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
                 </div>
@@ -116,7 +116,7 @@ export default function Testimonials() {
         <div className="flex justify-center gap-2 mt-10">
           {Array.from({ length: pageCount }, (_, p) => (
             <button key={p} onClick={() => setPage(p)} aria-label={`Page ${p + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${p === safePage ?"w-8 bg-[#D97706]" :"w-4 bg-gray-200"}`} />
+              className={`h-1.5 rounded-full transition-all duration-300 ${p === safePage ? "w-8 bg-[#D97706]" : "w-4 bg-gray-200"}`} />
           ))}
         </div>
 

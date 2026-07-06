@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from"react";
-import { motion } from"framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface WeatherWidgetProps {
   lat: number;
@@ -17,15 +17,15 @@ interface WeatherData {
 
 // Maps WMO codes to simple conditions
 function getWeatherCondition(code: number): string {
-  if (code === 0) return"Clear Sky";
-  if (code === 1 || code === 2 || code === 3) return"Partly Cloudy";
-  if (code === 45 || code === 48) return"Foggy";
-  if (code >= 51 && code <= 67) return"Rainy";
-  if (code >= 71 && code <= 77) return"Snowy";
-  if (code >= 80 && code <= 82) return"Rain Showers";
-  if (code >= 85 && code <= 86) return"Snow Showers";
-  if (code >= 95 && code <= 99) return"Thunderstorm";
-  return"Clear";
+  if (code === 0) return "Clear Sky";
+  if (code === 1 || code === 2 || code === 3) return "Partly Cloudy";
+  if (code === 45 || code === 48) return "Foggy";
+  if (code >= 51 && code <= 67) return "Rainy";
+  if (code >= 71 && code <= 77) return "Snowy";
+  if (code >= 80 && code <= 82) return "Rain Showers";
+  if (code >= 85 && code <= 86) return "Snow Showers";
+  if (code >= 95 && code <= 99) return "Thunderstorm";
+  return "Clear";
 }
 
 export default function WeatherWidget({ lat, lng, name }: WeatherWidgetProps) {
@@ -84,7 +84,7 @@ export default function WeatherWidget({ lat, lng, name }: WeatherWidgetProps) {
       </div>
       
       <div>
-        <div className="text-5xl  font-700 tracking-tighter mb-1">
+        <div className="text-5xl font-clash font-700 tracking-tighter mb-1">
           {weather.temp}°<span className="text-3xl text-white/70">C</span>
         </div>
         <div className="text-white/80 font-medium">

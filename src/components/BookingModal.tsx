@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from"react";
-import { createPortal } from"react-dom";
-import { motion, AnimatePresence } from"framer-motion";
-import Image from"next/image";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -13,10 +13,10 @@ interface BookingModalProps {
 export default function BookingModal({ isOpen, onClose, itineraryName }: BookingModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
-    fullName:"",
-    email:"",
-    phone:"",
-    dateOfTravel:""
+    fullName: "",
+    email: "",
+    phone: "",
+    dateOfTravel: ""
   });
   const [mounted, setMounted] = useState(false);
 
@@ -31,7 +31,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
 
   const handleClose = () => {
     setStep(1);
-    setFormData({ fullName:"", email:"", phone:"", dateOfTravel:"" });
+    setFormData({ fullName: "", email: "", phone: "", dateOfTravel: "" });
     onClose();
   };
 
@@ -69,10 +69,10 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
-                <h3 className="text-2xl md:text-3xl font-600 mb-2">
-                  {step === 1 ?"Book Your Trip" :"Complete Payment"}
+                <h3 className="font-clash text-2xl md:text-3xl font-600 mb-2">
+                  {step === 1 ? "Book Your Trip" : "Complete Payment"}
                 </h3>
-                <p className="text-white/80 text-sm md:text-base">
+                <p className="text-white/80 text-sm md:text-base font-switzerland">
                   {itineraryName}
                 </p>
               </div>

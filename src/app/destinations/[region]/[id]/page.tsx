@@ -1,12 +1,12 @@
-import Image from"next/image";
-import Link from"next/link";
-import { notFound } from"next/navigation";
-import { regions } from"@/data/destinations";
-import { regionItineraries } from"@/data/itineraries";
-import { asset } from"@/lib/asset";
-import Navbar from"@/components/Navbar";
-import Footer from"@/components/Footer";
-import WeatherWidget from"@/components/WeatherWidget";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { regions } from "@/data/destinations";
+import { regionItineraries } from "@/data/itineraries";
+import { asset } from "@/lib/asset";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WeatherWidget from "@/components/WeatherWidget";
 
 export function generateStaticParams() {
   const params: { region: string; id: string }[] = [];
@@ -42,7 +42,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
   return (
     <>
       <Navbar />
-      <main className="bg-[#F5F9FD] min-h-screen pb-20">
+      <main className="font-switzerland bg-[#F5F9FD] min-h-screen pb-20">
         
         {/* Hero Section */}
         <section className="relative min-h-[50vh] md:min-h-0 md:h-[70vh] flex flex-col justify-end pt-28 pb-10 px-6 md:px-12 lg:px-20">
@@ -62,7 +62,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
                 <span className="inline-block bg-[#F59E0B] text-[#06172E] text-[10px] md:text-xs font-700 tracking-wider uppercase px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-4 md:mb-6">
                   {regionData.name}
                 </span>
-                <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-4">
+                <h1 className="font-clash text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-4">
                   {destination.name}
                 </h1>
                 <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">
@@ -92,7 +92,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
                 {destination.longDesc}
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-600 text-[#06172E] mb-6">
+              <h2 className="font-clash text-2xl md:text-3xl font-600 text-[#06172E] mb-6">
                 Key Highlights
               </h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
@@ -108,7 +108,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
             {/* Right Col: Quick Info */}
             <div className="w-full lg:w-1/3">
               <div className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 sticky top-32">
-                <h3 className="text-xl font-600 text-[#06172E] mb-6">Plan Your Visit</h3>
+                <h3 className="font-clash text-xl font-600 text-[#06172E] mb-6">Plan Your Visit</h3>
                 
                 <div className="space-y-6">
                   <div>
@@ -129,7 +129,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
         {relatedItineraries.length > 0 && (
           <section className="px-6 md:px-12 lg:px-20 mt-24 mb-12">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-600 text-[#06172E] mb-10 text-center md:text-left">
+              <h2 className="font-clash text-3xl md:text-4xl font-600 text-[#06172E] mb-10 text-center md:text-left">
                 Itineraries Featuring {destination.name}
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -156,7 +156,7 @@ export default async function DetailedDestinationPage({ params }: { params: Prom
                     </div>
                     {/* Content Section */}
                     <div className="p-6 md:p-8 flex flex-col flex-grow">
-                      <h3 className="text-xl md:text-2xl font-600 text-[#06172E] mb-3 leading-tight group-hover:text-[#F59E0B] transition-colors">
+                      <h3 className="font-clash text-xl md:text-2xl font-600 text-[#06172E] mb-3 leading-tight group-hover:text-[#F59E0B] transition-colors">
                         {itinerary.name}
                       </h3>
                       <p className="text-gray-600 text-sm md:text-base line-clamp-2 mb-6">

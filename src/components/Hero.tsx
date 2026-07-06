@@ -1,17 +1,17 @@
 "use client";
-import { useRef } from"react";
-import { asset } from"@/lib/asset";
-import { motion, useScroll, useTransform } from"framer-motion";
+import { useRef } from "react";
+import { asset } from "@/lib/asset";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start","end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%","20%"]);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const scrimOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.45]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%","25%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#06172E]">
+    <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#06172E] font-switzerland">
       {/* Background Video */}
       <motion.div style={{ y }} className="absolute inset-0 h-[108%] w-full">
         <div className="relative h-full w-full">
@@ -93,7 +93,7 @@ export default function Hero() {
         </span>
         <motion.div
           animate={{ scaleY: [0.2, 1, 0.2], originY: 0 }}
-          transition={{ duration: 2, repeat: Infinity, ease:"easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="w-px h-10 bg-[#F59E0B]/60"
         />
       </motion.div>

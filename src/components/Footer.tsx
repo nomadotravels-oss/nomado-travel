@@ -1,10 +1,10 @@
 "use client";
-import { useState } from"react";
+import { useState } from "react";
 
 export default function Footer() {
   const [isPermitOpen, setIsPermitOpen] = useState(false);
   return (
-    <footer id="reach-us" className="bg-[#083A7A] border-t border-[#0F4C9C]/50 px-6 md:px-12 lg:px-20 py-16 md:py-20 scroll-mt-20  text-white">
+    <footer id="reach-us" className="bg-[#083A7A] border-t border-[#0F4C9C]/50 px-6 md:px-12 lg:px-20 py-16 md:py-20 scroll-mt-20 font-switzerland text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           
@@ -16,7 +16,7 @@ export default function Footer() {
                 <span className="font-light text-white">.travel</span>
               </span>
             </div>
-            <p className="text-base italic text-[#B6C6DD] leading-relaxed max-w-xs">
+            <p className="font-cormorant text-base italic text-[#B6C6DD] leading-relaxed max-w-xs">
               Curating immersive journeys through the many layers of Kashmir — its people, traditions, landscapes, and stories.
             </p>
           </div>
@@ -26,10 +26,10 @@ export default function Footer() {
             <span className="text-[10px] tracking-[0.25em] font-700 uppercase text-[#F59E0B] mb-4 block">Navigate</span>
             <ul className="flex flex-col gap-3">
               {[
-                { label:"Destinations", href:"/#destinations" },
-                { label:"Experiences", href:"/#experiences" },
-                { label:"Journal", href:"/#journal" },
-                { label:"Contact", href:"/#contact" },
+                { label: "Destinations", href: "/#destinations" },
+                { label: "Experiences", href: "/#experiences" },
+                { label: "Journal", href: "/#journal" },
+                { label: "Contact", href: "/#contact" },
               ].map(link => (
                 <li key={link.label}>
                   <a
@@ -83,7 +83,7 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-            <p className="text-sm italic text-[#B6C6DD] leading-relaxed">
+            <p className="font-cormorant text-sm italic text-[#B6C6DD] leading-relaxed">
               Travel slowly. Travel meaningfully.
             </p>
           </div>

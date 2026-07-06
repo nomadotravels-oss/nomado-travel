@@ -1,35 +1,35 @@
 "use client";
-import { useRef } from"react";
-import Image from"next/image";
-import Link from"next/link";
-import { motion, useInView } from"framer-motion";
-import { asset } from"@/lib/asset";
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useInView } from "framer-motion";
+import { asset } from "@/lib/asset";
 
 const MotionLink = motion(Link);
 
 const itineraries = [
   {
-    id:"kashmir",
-    name:"Kashmir",
-    duration:"View 5 Itineraries",
-    desc:"A perfect introduction to the valley, covering Srinagar's lakes, Gulmarg's meadows, and Pahalgam's pristine valleys.",
-    image:"/images/kashmir-tile.jpg",
+    id: "kashmir",
+    name: "Kashmir",
+    duration: "View 5 Itineraries",
+    desc: "A perfect introduction to the valley, covering Srinagar's lakes, Gulmarg's meadows, and Pahalgam's pristine valleys.",
+    image: "/images/kashmir-tile.jpg",
   },
   {
-    id:"ladakh",
-    name:"Ladakh",
-    duration:"View 5 Itineraries",
-    desc:"Journey through high passes, ancient monasteries, the dunes of Nubra Valley, and the vast Pangong Lake.",
-    image:"/images/ladakh.jpg",
+    id: "ladakh",
+    name: "Ladakh",
+    duration: "View 5 Itineraries",
+    desc: "Journey through high passes, ancient monasteries, the dunes of Nubra Valley, and the vast Pangong Lake.",
+    image: "/images/ladakh.jpg",
   }
 ];
 
 export default function Itineraries() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="itineraries" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section id="itineraries" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden font-switzerland">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
@@ -38,7 +38,7 @@ export default function Itineraries() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
+            className="font-switzerland text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
           >
             Quick Itineraries
           </motion.h2>
@@ -83,14 +83,14 @@ export default function Itineraries() {
                 <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10 lg:p-12">
                   <div className="flex flex-col gap-3 md:gap-4">
                     <div className="flex items-center gap-4">
-                      <h3 className="text-[clamp(2rem,4vw,3.2rem)] font-600 text-[#F5F9FD] leading-none">
+                      <h3 className="font-clash text-[clamp(2rem,4vw,3.2rem)] font-600 text-[#F5F9FD] leading-none">
                         {itinerary.name}
                       </h3>
                       <svg viewBox="0 0 32 24" className="w-8 h-6 md:w-9 md:h-7 shrink-0 text-[#F59E0B] transition-transform duration-500 group-hover:translate-x-1.5 translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2.2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h24M19 5l8 7-8 7" />
                       </svg>
                     </div>
-                    <p className="text-white/80  text-sm md:text-base lg:text-lg leading-relaxed max-w-sm line-clamp-2 md:line-clamp-none">
+                    <p className="text-white/80 font-switzerland text-sm md:text-base lg:text-lg leading-relaxed max-w-sm line-clamp-2 md:line-clamp-none">
                       {itinerary.desc}
                     </p>
                   </div>

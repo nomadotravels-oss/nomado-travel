@@ -1,15 +1,15 @@
 "use client";
-import { useRef, useState } from"react";
-import Image from"next/image";
-import { asset } from"@/lib/asset";
-import { motion, useInView } from"framer-motion";
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
+import { motion, useInView } from "framer-motion";
 
-const SHEET_URL = process.env.NEXT_PUBLIC_SHEET_URL ??"";
-const interests = ["Culture & Heritage","Food & Culinary","Photography","Nature & Trekking","Craft & Artisan","Village Life","Winter Kashmir","Spiritual Trails"];
+const SHEET_URL = process.env.NEXT_PUBLIC_SHEET_URL ?? "";
+const interests = ["Culture & Heritage", "Food & Culinary", "Photography", "Nature & Trekking", "Craft & Artisan", "Village Life", "Winter Kashmir", "Spiritual Trails"];
 
 export default function Contact() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [selected, setSelected] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -26,15 +26,15 @@ export default function Contact() {
       email:     (form.elements.namedItem("email") as HTMLInputElement).value,
       phone:     (form.elements.namedItem("phone") as HTMLInputElement).value,
       message:   (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-      interests: selected.join(","),
+      interests: selected.join(", "),
       timestamp: new Date().toISOString(),
     };
     if (SHEET_URL) {
       try {
         await fetch(SHEET_URL, {
-          method:"POST",
-          mode:"no-cors",
-          headers: {"Content-Type":"application/json" },
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
       } catch (_) {}
@@ -49,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="bg-[#FAFAF8] lg:bg-white">
+    <section id="contact" ref={ref} className="bg-[#FAFAF8] lg:bg-white font-switzerland">
       <div className="grid lg:grid-cols-2 lg:items-stretch">
         
         {/* Left: Image Container */}
@@ -69,7 +69,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9 }}
-              className="italic text-[clamp(1.5rem,2.4vw,2.3rem)] text-[#F5F9FD] leading-[1.3] max-w-sm"
+              className="font-cormorant italic text-[clamp(1.5rem,2.4vw,2.3rem)] text-[#F5F9FD] leading-[1.3] max-w-sm"
             >
               Every great journey begins with a single conversation.
             </motion.p>
@@ -86,7 +86,7 @@ export default function Contact() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl md:text-4xl font-800 leading-tight text-black mb-4"
             >
-              Tell us what <span className="italic font-400 text-[#D97706] tracking-normal">inspires you.</span>
+              Tell us what <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">inspires you.</span>
             </motion.h2>
             
             <motion.p
@@ -107,7 +107,7 @@ export default function Contact() {
               >
                 <div className="text-4xl text-[#D97706] mb-4">✦</div>
                 <h3 className="text-xl font-800 text-black mb-2">We&apos;ve received your enquiry.</h3>
-                <p className="italic text-gray-500 text-base mb-6">
+                <p className="font-cormorant italic text-gray-500 text-base mb-6">
                   Someone from the team will reach out within 48 hours.
                 </p>
                 <button
@@ -128,8 +128,8 @@ export default function Contact() {
                 {/* Name + Email */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   {[
-                    { id:"name",  label:"Your Name",  placeholder:"James Wilson",       type:"text"  },
-                    { id:"email", label:"Email",       placeholder:"james@example.com",  type:"email" },
+                    { id: "name",  label: "Your Name",  placeholder: "James Wilson",       type: "text"  },
+                    { id: "email", label: "Email",       placeholder: "james@example.com",  type: "email" },
                   ].map(f => (
                     <div key={f.id} className="flex flex-col">
                       <label htmlFor={f.id} className="text-[10px] tracking-[0.2em] font-700 uppercase text-gray-400 mb-1.5 block">
@@ -175,8 +175,8 @@ export default function Contact() {
                         onClick={() => toggle(item)}
                         className={`text-[10px] tracking-[0.05em] font-700 uppercase px-3.5 py-1.5 border rounded-full transition-all duration-300 ${
                           selected.includes(item)
-                            ?"border-black bg-black text-white"
-                            :"border-gray-200 bg-white text-gray-500 hover:border-black hover:text-black"
+                            ? "border-black bg-black text-white"
+                            : "border-gray-200 bg-white text-gray-500 hover:border-black hover:text-black"
                         }`}
                       >
                         {item}
@@ -204,7 +204,7 @@ export default function Contact() {
                   disabled={sending}
                   className="self-start text-[11px] tracking-[0.2em] font-700 uppercase px-10 py-3.5 bg-[#D97706] text-white hover:bg-[#F59E0B] rounded-full disabled:opacity-60 transition-all duration-300 mt-2 shadow-sm hover:shadow-md"
                 >
-                  {sending ?"Sending…" :"Send Enquiry →"}
+                  {sending ? "Sending…" : "Send Enquiry →"}
                 </button>
               </motion.form>
             )}

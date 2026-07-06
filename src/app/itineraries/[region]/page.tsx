@@ -1,11 +1,11 @@
-import Image from"next/image";
-import Link from"next/link";
-import { notFound } from"next/navigation";
-import { regionItineraries } from"@/data/itineraries";
-import { asset } from"@/lib/asset";
-import Navbar from"@/components/Navbar";
-import Footer from"@/components/Footer";
-import Contact from"@/components/Contact";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { regionItineraries } from "@/data/itineraries";
+import { asset } from "@/lib/asset";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export function generateStaticParams() {
   return [
@@ -26,7 +26,7 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
   return (
     <>
       <Navbar />
-      <main className="bg-[#F5F9FD] min-h-screen">
+      <main className="font-switzerland bg-[#F5F9FD] min-h-screen">
         
         {/* Hero Banner for Region */}
         <section className="relative h-[40vh] md:h-[48vh] flex items-end pb-12 px-6 md:px-12 lg:px-20">
@@ -44,7 +44,7 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
             <span className="text-[12px] md:text-[14px] tracking-[0.2em] font-700 text-[#F59E0B] uppercase mb-4 block">
               {regionData.tagline}
             </span>
-            <h1 className="text-[clamp(3rem,6vw,5rem)] font-700 leading-none tracking-tight">
+            <h1 className="font-clash text-[clamp(3rem,6vw,5rem)] font-700 leading-none tracking-tight">
               {regionData.name} Itineraries
             </h1>
           </div>
@@ -79,10 +79,10 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
 
                   {/* Content Section */}
                   <div className="p-6 md:p-7 flex flex-col flex-1">
-                    <h3 className="text-xl md:text-[1.35rem] font-600 text-[#06172E] mb-2 leading-tight">
+                    <h3 className="font-clash text-xl md:text-[1.35rem] font-600 text-[#06172E] mb-2 leading-tight">
                       {itinerary.name}
                     </h3>
-                    <p className="text-gray-500  text-sm leading-relaxed line-clamp-2 mb-5">
+                    <p className="text-gray-500 font-switzerland text-sm leading-relaxed line-clamp-2 mb-5">
                       {itinerary.desc}
                     </p>
                     

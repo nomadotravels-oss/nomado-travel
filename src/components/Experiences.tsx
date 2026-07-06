@@ -1,35 +1,35 @@
 "use client";
-import { useRef } from"react";
-import Image from"next/image";
-import { asset } from"@/lib/asset";
-import { motion, useInView } from"framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
+import { motion, useInView } from "framer-motion";
 
-import Link from"next/link";
-import { experiences } from"@/data/experiences";
+import Link from "next/link";
+import { experiences } from "@/data/experiences";
 
 export default function Experiences() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollSlider = (direction:"left" |"right") => {
+  const scrollSlider = (direction: "left" | "right") => {
     if (sliderRef.current) {
       const { scrollLeft, clientWidth } = sliderRef.current;
       const scrollAmount = clientWidth * 0.75;
       sliderRef.current.scrollTo({
-        left: direction ==="left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior:"smooth",
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
       });
     }
   };
 
   return (
-    <section id="experiences" ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section id="experiences" ref={ref} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden font-switzerland">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Block with Navigation Controls in Top Right */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 md:mb-16 gap-6">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl font-switzerland">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -88,7 +88,7 @@ export default function Experiences() {
                       alt={exp.title}
                       fill
                       className="object-cover"
-                      style={{ objectPosition: exp.pos ??"center" }}
+                      style={{ objectPosition: exp.pos ?? "center" }}
                       sizes="(max-width:640px) 280px, (max-width:1024px) 320px, 360px"
                     />
                   </motion.div>
@@ -98,7 +98,7 @@ export default function Experiences() {
 
                   {/* Overlaid Title on Card Bottom-Left */}
                   <div className="absolute bottom-0 left-0 p-5 sm:p-6 w-full text-left pointer-events-none">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-800 text-white  tracking-tight leading-tight">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-800 text-white font-switzerland tracking-tight leading-tight">
                       {exp.title}
                     </h3>
                   </div>
