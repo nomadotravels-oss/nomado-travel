@@ -62,47 +62,53 @@ export default function Hero() {
 
       </motion.div>
 
-      {/* Action Buttons - Lower Hero Section */}
+      {/* Call Now Button - Lower Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-[18vh] md:bottom-[15vh] left-1/2 -translate-x-1/2 z-20 w-full px-6 md:px-12 max-w-5xl"
+        className="absolute bottom-[22vh] md:bottom-[20vh] left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 w-full">
-          <a
-            href="https://etickets.jammukashmircablecar.com/Ticket/Login.aspx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-500 shadow-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] backdrop-blur-md w-full md:w-auto shrink-0"
-          >
-            Book Gondola Tickets
-          </a>
+        <a
+          href="tel:+917006712010"
+          className="flex items-center gap-3 text-[12px] tracking-[0.2em] font-700 uppercase px-10 py-4 border border-white/30 text-white bg-white/10 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-500 shadow-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] backdrop-blur-md"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          Call Now
+        </a>
+      </motion.div>
 
-          <a
-            href="tel:+917006712010"
-            className="flex items-center justify-center gap-3 text-[11px] md:text-[12px] tracking-[0.2em] font-700 uppercase px-8 md:px-10 py-3.5 md:py-4 border border-white/30 text-[#06172E] bg-white hover:bg-white/90 rounded-full transition-all duration-500 shadow-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.4)] backdrop-blur-md w-full md:w-auto shrink-0"
+      {/* Utility Booking Buttons - Bottom Edge */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full px-6 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6"
+      >
+        <a
+          href="https://etickets.jammukashmircablecar.com/Ticket/Login.aspx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-white/20 text-white/80 bg-black/20 hover:bg-white hover:text-[#06172E] rounded-full transition-all duration-300 backdrop-blur-sm w-full md:w-auto"
+        >
+          Book Gondola Tickets
+        </a>
+        
+        <div className="relative w-full md:w-auto">
+          <button
+            onClick={() => setIsPermitOpen(!isPermitOpen)}
+            className="flex items-center justify-center gap-2 text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-[#F59E0B]/30 text-[#F59E0B]/90 bg-black/20 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-300 backdrop-blur-sm w-full"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            Call Now
-          </a>
-          
-          <div className="relative w-full md:w-auto shrink-0">
-            <button
-              onClick={() => setIsPermitOpen(!isPermitOpen)}
-              className="flex items-center justify-center gap-2 text-[10px] md:text-[11px] tracking-[0.1em] font-700 uppercase px-6 md:px-8 py-3.5 md:py-4 border border-[#F59E0B]/50 text-[#F59E0B] bg-[#F59E0B]/10 hover:bg-[#F59E0B] hover:text-[#06172E] rounded-full transition-all duration-500 shadow-lg backdrop-blur-md w-full"
-            >
-              Ladakh Inner Line Permit
-              <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isPermitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-            </button>
+            Ladakh Inner Line Permit
+            <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isPermitOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+          </button>
 
-            {isPermitOpen && (
-              <div className="absolute bottom-full left-0 right-0 mb-3 bg-[#06172E]/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
-                <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-domestic" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider border-b border-white/5 transition-colors">Indian Traveller</a>
-                <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-overseas" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider transition-colors">Overseas Traveller</a>
-              </div>
-            )}
-          </div>
+          {isPermitOpen && (
+            <div className="absolute bottom-full left-0 right-0 mb-3 bg-[#06172E]/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+              <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-domestic" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider border-b border-white/5 transition-colors">Indian Traveller</a>
+              <a onClick={() => setIsPermitOpen(false)} href="https://www.lahdclehpermit.in/register-as-overseas" target="_blank" rel="noopener noreferrer" className="px-5 py-3.5 text-[10px] font-700 text-white hover:bg-white/10 text-center uppercase tracking-wider transition-colors">Overseas Traveller</a>
+            </div>
+          )}
         </div>
       </motion.div>
 
