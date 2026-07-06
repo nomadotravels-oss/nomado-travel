@@ -1,30 +1,30 @@
 "use client";
-import { useRef } from "react";
-import Image from "next/image";
-import { asset } from "@/lib/asset";
-import { motion, useInView } from "framer-motion";
+import { useRef } from"react";
+import Image from"next/image";
+import { asset } from"@/lib/asset";
+import { motion, useInView } from"framer-motion";
 
 const pillars = [
   {
-    word: "Curated",
-    desc: "Every journey is thoughtfully designed around authentic experiences, never crowded tourist circuits.",
+    word:"Curated",
+    desc:"Every journey is thoughtfully designed around authentic experiences, never crowded tourist circuits.",
   },
   {
-    word: "Local",
-    desc: "Our experiences are created and hosted by people born and raised in the valley — who know it intimately.",
+    word:"Local",
+    desc:"Our experiences are created and hosted by people born and raised in the valley — who know it intimately.",
   },
   {
-    word: "Personal",
-    desc: "Flexible, meaningful, and tailored to you. No two Nomado journeys are ever quite the same.",
+    word:"Personal",
+    desc:"Flexible, meaningful, and tailored to you. No two Nomado journeys are ever quite the same.",
   },
 ];
 
 export default function WhyNomado() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin:"-100px" });
 
   return (
-    <section ref={ref} className="bg-[#F5F8FD] py-20 md:py-24 px-6 md:px-12 lg:px-20 font-switzerland">
+    <section ref={ref} className="bg-[#F5F8FD] py-20 md:py-24 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 md:gap-16">
         
         {/* Left: image + heading */}
@@ -36,8 +36,8 @@ export default function WhyNomado() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl md:text-4xl lg:text-5xl font-800 leading-[1.1] text-black mb-8"
             >
-              Travel with{" "}
-              <span className="font-cormorant italic font-400 text-[#D97706] tracking-normal">intention.</span>
+              Travel with{""}
+              <span className="italic font-400 text-[#D97706] tracking-normal">intention.</span>
             </motion.h2>
           </div>
 

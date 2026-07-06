@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { experiences, getExperienceById } from "@/data/experiences";
-import { asset } from "@/lib/asset";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Contact from "@/components/Contact";
+import Image from"next/image";
+import Link from"next/link";
+import { notFound } from"next/navigation";
+import { experiences, getExperienceById } from"@/data/experiences";
+import { asset } from"@/lib/asset";
+import Navbar from"@/components/Navbar";
+import Footer from"@/components/Footer";
+import Contact from"@/components/Contact";
 
 export function generateStaticParams() {
   return experiences.map((exp) => ({
@@ -24,7 +24,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ id:
   return (
     <>
       <Navbar />
-      <main className="font-switzerland bg-[#F5F9FD] min-h-screen">
+      <main className="bg-[#F5F9FD] min-h-screen">
         
         {/* Hero Section */}
         <section className="relative h-[60vh] md:h-[70vh] flex items-end pb-16 px-6 md:px-12 lg:px-20">
@@ -34,7 +34,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ id:
               alt={experience.title}
               fill
               className="object-cover"
-              style={{ objectPosition: experience.pos ?? "center" }}
+              style={{ objectPosition: experience.pos ??"center" }}
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#06172E] via-[#06172E]/50 to-transparent" />
@@ -47,7 +47,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ id:
             <span className="text-[12px] md:text-[14px] tracking-[0.2em] font-700 text-white/80 uppercase mb-3 block">
               {experience.region}
             </span>
-            <h1 className="font-clash text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-8">
+            <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-8">
               {experience.title}
             </h1>
             
@@ -79,12 +79,12 @@ export default async function ExperiencePage({ params }: { params: Promise<{ id:
         <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
-              <h2 className="font-clash text-2xl md:text-3xl font-600 text-[#06172E] mb-6">About this Experience</h2>
+              <h2 className="text-2xl md:text-3xl font-600 text-[#06172E] mb-6">About this Experience</h2>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-10 whitespace-pre-wrap">
                 {experience.longDesc}
               </p>
               
-              <h3 className="font-clash text-xl md:text-2xl font-600 text-[#06172E] mb-6">Highlights</h3>
+              <h3 className="text-xl md:text-2xl font-600 text-[#06172E] mb-6">Highlights</h3>
               <div className="grid sm:grid-cols-2 gap-4 mb-12">
                 {experience.highlights.map((highlight, idx) => (
                   <div key={idx} className="flex items-start gap-3">
@@ -100,7 +100,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ id:
               
               <div className="border-t border-gray-100 pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
-                  <h4 className="font-clash text-lg font-600 text-[#06172E] mb-1">Interested in this experience?</h4>
+                  <h4 className="text-lg font-600 text-[#06172E] mb-1">Interested in this experience?</h4>
                   <p className="text-gray-500 text-sm">Our travel experts will help you craft the perfect itinerary.</p>
                 </div>
                 <a href="tel:+917006712010" className="flex items-center justify-center gap-2 text-[12px] tracking-[0.1em] font-700 uppercase px-8 py-4 bg-[#F59E0B] text-[#06172E] hover:bg-[#06172E] hover:text-white rounded-full transition-all duration-300 w-full sm:w-auto shrink-0">

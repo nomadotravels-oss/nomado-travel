@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@300;400;500;600&family=Nunito:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
 
 @import "tailwindcss";
 @source "../**/*.{ts,tsx}";
+
+@theme {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 :root {
   --white: #FFFFFF;
@@ -17,16 +20,9 @@
 
 html { scroll-behavior: smooth; }
 
-.font-century { font-family: 'Century Gothic', CenturyGothic, 'Nunito', AppleGothic, sans-serif; }
-.font-century-bold { font-family: 'Century Gothic', CenturyGothic, 'Nunito', AppleGothic, sans-serif; font-weight: 900; -webkit-text-stroke: 0.7px currentColor; }
-@media (max-width: 767px) {
-  .font-century-bold { -webkit-text-stroke: 0.9px currentColor; }
-}
-
 body {
   background-color: var(--white);
   color: var(--charcoal);
-  font-family: 'DM Sans', 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
@@ -43,15 +39,7 @@ button, a, [role="button"], input[type="submit"], label[for] {
 ::selection { background: var(--saffron); color: var(--white); }
 
 /* ── Fonts ──────────────────────────────── */
-@utility font-clash {
-  font-family: 'Clash Display', 'DM Sans', 'Inter', sans-serif;
-}
-@utility font-cormorant {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-}
-@utility font-switzerland {
-  font-family: 'DM Sans', 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
-}
+/* Old fonts have been removed and we rely on Tailwind default --font-sans */
 
 /* ── Marquee ────────────────────────────── */
 @keyframes marquee {

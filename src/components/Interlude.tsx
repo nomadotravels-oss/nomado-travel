@@ -1,27 +1,27 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
-import { asset } from "@/lib/asset";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from"react";
+import Image from"next/image";
+import { asset } from"@/lib/asset";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from"framer-motion";
 
 const quotes = [
-  { lang: "Persian",  dir: "rtl" as const, text: "«اگر بر روی زمین هست, همین‌جاست, همین‌جاست, همین‌جاست»" },
-  { lang: "English",  dir: "ltr" as const, text: "“If there is a paradise on earth, it is here, it is here, it is here.”" },
-  { lang: "Hindi",    dir: "ltr" as const, text: "«अगर धरती पर कहीं स्वर्ग है, तो यहीं है, यहीं है, यहीं है»" },
-  { lang: "French",   dir: "ltr" as const, text: "«S’il existe un paradis sur terre, c’est ici, c’est ici, c’est ici.»" },
-  { lang: "Malay",    dir: "ltr" as const, text: "“Jika ada syurga di bumi, ia di sini, ia di sini, ia di sini.”" },
-  { lang: "Japanese", dir: "ltr" as const, text: "「地上に楽園があるとすれば、それはここだ、ここだ、ここだ。」" },
-  { lang: "German",   dir: "ltr" as const, text: "„Wenn es ein Paradies auf Erden gibt, dann ist es hier, hier, hier.“" },
-  { lang: "Russian",  dir: "ltr" as const, text: "«Если на земле есть рай, то он здесь, здесь, здесь.»" },
+  { lang:"Persian",  dir:"rtl" as const, text:"«اگر بر روی زمین هست, همین‌جاست, همین‌جاست, همین‌جاست»" },
+  { lang:"English",  dir:"ltr" as const, text:"“If there is a paradise on earth, it is here, it is here, it is here.”" },
+  { lang:"Hindi",    dir:"ltr" as const, text:"«अगर धरती पर कहीं स्वर्ग है, तो यहीं है, यहीं है, यहीं है»" },
+  { lang:"French",   dir:"ltr" as const, text:"«S’il existe un paradis sur terre, c’est ici, c’est ici, c’est ici.»" },
+  { lang:"Malay",    dir:"ltr" as const, text:"“Jika ada syurga di bumi, ia di sini, ia di sini, ia di sini.”" },
+  { lang:"Japanese", dir:"ltr" as const, text:"「地上に楽園があるとすれば、それはここだ、ここだ、ここだ。」" },
+  { lang:"German",   dir:"ltr" as const, text:"„Wenn es ein Paradies auf Erden gibt, dann ist es hier, hier, hier.“" },
+  { lang:"Russian",  dir:"ltr" as const, text:"«Если на земле есть рай, то он здесь, здесь, здесь.»" },
 ];
 
 const INTERVAL = 3400;
 
 export default function Interlude() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const inView = useInView(ref, { once: true, margin:"-100px" });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end","end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%","15%"]);
 
   const [index, setIndex] = useState(0);
 
@@ -36,7 +36,7 @@ export default function Interlude() {
   const current = quotes[index];
 
   return (
-    <section ref={ref} className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center justify-center font-switzerland">
+    <section ref={ref} className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Parallax image */}
       <motion.div style={{ y }} className="absolute inset-0 h-[130%] -top-[15%]">
         <Image
@@ -68,14 +68,14 @@ export default function Interlude() {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
-              exit={{   opacity: 0, y: -36, filter: "blur(8px)" }}
+              initial={{ opacity: 0, y: 36, filter:"blur(8px)" }}
+              animate={{ opacity: 1, y: 0,  filter:"blur(0px)" }}
+              exit={{   opacity: 0, y: -36, filter:"blur(8px)" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               dir={current.dir}
               className="absolute inset-x-0 px-2"
             >
-              <p className="font-cormorant italic text-[clamp(1.55rem,3.8vw,3rem)] leading-[1.4] text-[#F5F9FD]">
+              <p className="italic text-[clamp(1.55rem,3.8vw,3rem)] leading-[1.4] text-[#F5F9FD]">
                 {current.text}
               </p>
             </motion.div>
@@ -117,11 +117,11 @@ export default function Interlude() {
                 <motion.span
                   animate={{
                     width:           i === index ? 20 : 6,
-                    backgroundColor: i === index ? "#F59E0B" : "rgba(201,217,232,0.35)",
+                    backgroundColor: i === index ?"#F59E0B" :"rgba(201,217,232,0.35)",
                   }}
                   transition={{ duration: 0.35 }}
                   className="block h-1.5 rounded-full"
-                  style={{ width: 6, backgroundColor: "rgba(201,217,232,0.35)" }}
+                  style={{ width: 6, backgroundColor:"rgba(201,217,232,0.35)" }}
                 />
               </button>
             ))}

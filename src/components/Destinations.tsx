@@ -1,10 +1,10 @@
 "use client";
-import { useState, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { asset } from "@/lib/asset";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { regions } from "@/data/destinations";
+import { useState, useRef } from"react";
+import Image from"next/image";
+import Link from"next/link";
+import { asset } from"@/lib/asset";
+import { motion, AnimatePresence, useInView } from"framer-motion";
+import { regions } from"@/data/destinations";
 
 type Region = typeof regions[0];
 
@@ -33,7 +33,7 @@ function RegionTile({ region, onClick, inView, delay }: { region: Region; onClic
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10 lg:p-12">
           <div className="flex items-center gap-4">
-            <h3 className="font-clash text-[clamp(2.4rem,4.5vw,4rem)] font-600 text-[#F5F9FD] leading-none">
+            <h3 className="text-[clamp(2.4rem,4.5vw,4rem)] font-600 text-[#F5F9FD] leading-none">
               {region.name}
             </h3>
             <svg viewBox="0 0 32 24" className="w-9 h-7 shrink-0 text-[#F59E0B] transition-transform duration-500 group-hover:translate-x-1.5 translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -49,13 +49,13 @@ function RegionTile({ region, onClick, inView, delay }: { region: Region; onClic
 function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => void }) {
   const innerSliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollInner = (direction: "left" | "right") => {
+  const scrollInner = (direction:"left" |"right") => {
     if (innerSliderRef.current) {
       const { scrollLeft, clientWidth } = innerSliderRef.current;
       const scrollAmount = clientWidth * 0.75;
       innerSliderRef.current.scrollTo({
-        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: "smooth",
+        left: direction ==="left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior:"smooth",
       });
     }
   };
@@ -67,7 +67,7 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45 }}
-      className="relative w-full overflow-hidden bg-white font-switzerland"
+      className="relative w-full overflow-hidden bg-white"
     >
       <div className="relative z-10 pt-1 pb-6">
         {/* Header */}
@@ -153,7 +153,7 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent group-hover/card:from-black/85 transition-all duration-300" />
 
                 {/* Text overlaid inside the card (bottom-left) - Name Only in Extra Bold */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col items-start font-switzerland z-10">
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col items-start  z-10">
                   <h4 className="text-base md:text-lg lg:text-xl font-800 text-white leading-snug tracking-tight">
                     {dest.name}
                   </h4>
@@ -169,7 +169,7 @@ function ExpandedRegion({ region, onClose }: { region: Region; onClose: () => vo
 
 export default function Destinations() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin:"-80px" });
   const [open, setOpen] = useState<string | null>(null);
 
   const activeRegion = regions.find(r => r.id === open) ?? null;
@@ -178,12 +178,12 @@ export default function Destinations() {
     <section id="destinations" ref={ref} className="bg-white py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="max-w-3xl mb-12 md:mb-16 font-switzerland">
+        <div className="max-w-3xl mb-12 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-switzerland text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
+            className="text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
           >
             Destinations
           </motion.h2>

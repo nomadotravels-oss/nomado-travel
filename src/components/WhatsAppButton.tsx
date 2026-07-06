@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from"react";
+import { motion, AnimatePresence } from"framer-motion";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -21,7 +21,7 @@ export default function WhatsAppButton() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          transition={{ type:"spring", stiffness: 260, damping: 20 }}
           className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#1EBE57] rounded-full flex items-center justify-center shadow-[0_4px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_32px_rgba(37,211,102,0.5)] transition-all duration-300 group"
           aria-label="Chat on WhatsApp"
         >

@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { regionItineraries } from "@/data/itineraries";
-import { asset } from "@/lib/asset";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import BookNowButton from "@/components/BookNowButton";
+import Image from"next/image";
+import Link from"next/link";
+import { notFound } from"next/navigation";
+import { regionItineraries } from"@/data/itineraries";
+import { asset } from"@/lib/asset";
+import Navbar from"@/components/Navbar";
+import Footer from"@/components/Footer";
+import BookNowButton from"@/components/BookNowButton";
 
 export function generateStaticParams() {
   const params: { region: string; id: string }[] = [];
@@ -35,7 +35,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
   return (
     <>
       <Navbar />
-      <main className="font-switzerland bg-[#F5F9FD] min-h-screen pb-20">
+      <main className="bg-[#F5F9FD] min-h-screen pb-20">
         
         {/* Hero Section */}
         <section className="relative min-h-[50vh] md:min-h-0 md:h-[70vh] flex flex-col justify-end pt-28 pb-10 px-6 md:px-12 lg:px-20">
@@ -55,7 +55,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
                 <span className="inline-block bg-[#F59E0B] text-[#06172E] text-[10px] md:text-xs font-700 tracking-wider uppercase px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-4 md:mb-6">
                   {itinerary.duration}
                 </span>
-                <h1 className="font-clash text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-4">
+                <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-700 leading-none tracking-tight mb-4">
                   {itinerary.name}
                 </h1>
                 <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">
@@ -78,7 +78,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
             
             {/* Left Col: Itinerary */}
             <div className="w-full lg:w-2/3">
-              <h2 className="font-clash text-3xl md:text-4xl font-600 text-[#06172E] mb-12">
+              <h2 className="text-3xl md:text-4xl font-600 text-[#06172E] mb-12">
                 Day by Day Plan
               </h2>
               
@@ -91,7 +91,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
                     <h3 className="text-sm font-700 text-[#F59E0B] tracking-wider uppercase mb-2">
                       Day {day.day}
                     </h3>
-                    <h4 className="font-clash text-xl md:text-2xl font-600 text-[#06172E] mb-4">
+                    <h4 className="text-xl md:text-2xl font-600 text-[#06172E] mb-4">
                       {day.title}
                     </h4>
                     
@@ -114,7 +114,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
             <div className="w-full lg:w-1/3 space-y-10">
               
               <div className="bg-white rounded-3xl p-8 shadow-[0_12px_40px_-16px_rgba(0,0,0,0.05)]">
-                <h3 className="font-clash text-2xl font-600 text-[#06172E] mb-6 flex items-center gap-3">
+                <h3 className="text-2xl font-600 text-[#06172E] mb-6 flex items-center gap-3">
                   <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                   </svg>
@@ -131,7 +131,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
               </div>
 
               <div className="bg-white rounded-3xl p-8 shadow-[0_12px_40px_-16px_rgba(0,0,0,0.05)]">
-                <h3 className="font-clash text-2xl font-600 text-[#06172E] mb-6 flex items-center gap-3">
+                <h3 className="text-2xl font-600 text-[#06172E] mb-6 flex items-center gap-3">
                   <svg className="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -148,7 +148,7 @@ export default async function DetailedItineraryPage({ params }: { params: Promis
               </div>
 
               <div className="bg-[#06172E] rounded-3xl p-8 text-white">
-                <h3 className="font-clash text-2xl font-600 mb-4">Ready to start?</h3>
+                <h3 className="text-2xl font-600 mb-4">Ready to start?</h3>
                 <p className="text-white/80 mb-8">
                   Get in touch with our experts to customize this itinerary to your exact preferences.
                 </p>
