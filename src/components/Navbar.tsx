@@ -52,14 +52,14 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/#contact"
+            href="tel:+917006712010"
             className={`font-clash text-[12px] tracking-[0.18em] uppercase px-6 py-2.5 border rounded-full transition-all duration-500 ${
               scrolled
                 ? "border-[#F59E0B]/40 text-[#F59E0B] hover:bg-[#F59E0B] hover:text-white hover:border-[#F59E0B]"
                 : "border-white/30 text-white hover:bg-white hover:text-black hover:border-white"
             }`}
           >
-            Make an Enquiry
+            Call Now
           </a>
         </div>
 

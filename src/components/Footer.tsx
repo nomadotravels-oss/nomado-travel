@@ -26,10 +26,15 @@ export default function Footer() {
                 { label: "Experiences", href: "/#experiences" },
                 { label: "Journal", href: "/#journal" },
                 { label: "Contact", href: "/#contact" },
+                { label: "Gondola Tickets", href: "https://etickets.jammukashmircablecar.com/Ticket/Login.aspx", target: "_blank" },
+                { label: "Permit (Indian)", href: "https://www.lahdclehpermit.in/register-as-domestic", target: "_blank" },
+                { label: "Permit (Foreign)", href: "https://www.lahdclehpermit.in/register-as-overseas", target: "_blank" },
               ].map(link => (
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    target={link.target}
+                    rel={link.target ? "noopener noreferrer" : undefined}
                     className="text-[11px] tracking-[0.15em] font-700 uppercase text-[#B6C6DD] hover:text-white transition-colors duration-300"
                   >
                     {link.label}
