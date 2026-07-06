@@ -83,14 +83,14 @@ export default function Navbar() {
             {links.map((link, i) => (
               <motion.a
                 key={link}
-                href={linkHrefs[link] ?? `/#${link.toLowerCase()}`}
+                href={link === "Contact" ? "tel:+917006712010" : (linkHrefs[link] ?? `/#${link.toLowerCase()}`)}
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 className="font-clash text-4xl font-600 text-[#F5F9FD] tracking-widest uppercase"
               >
-                {link}
+                {link === "Contact" ? "Call Us" : link}
               </motion.a>
             ))}
           </motion.div>
