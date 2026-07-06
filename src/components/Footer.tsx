@@ -117,7 +117,7 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="border-t border-[#0F4C9C]/40 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-[10px] tracking-[0.2em] font-700 uppercase text-[#7E97BE]">
-            © 2025 Nomado Travel. All rights reserved.
+            © 2025 Nomado Travel. All rights reserved. 
           </span>
           <span className="text-[10px] tracking-[0.1em] font-700 uppercase text-[#7E97BE]/60">
             Handcrafted with Care
