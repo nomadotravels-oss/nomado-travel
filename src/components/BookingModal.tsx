@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -27,12 +27,12 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
 
   const isEnquiryMode = formData.dateOfTravel && new Date(formData.dateOfTravel) > new Date("2026-10-20");
 
-  const handleEnquireClick = (e: any) => {
+  const handleEnquireClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setShowDropdown(!showDropdown);
   };
 
-  const handlePayNow = (e: any) => {
+  const handlePayNow = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep(2);
   };
