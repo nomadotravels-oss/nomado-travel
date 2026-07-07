@@ -11,7 +11,8 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ isOpen, onClose, itineraryName }: BookingModalProps) {
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [reservationNumber, setReservationNumber] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -37,8 +38,15 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
     setStep(2);
   };
 
+  const handlePaymentComplete = () => {
+    const resNumber = "RES-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    setReservationNumber(resNumber);
+    setStep(3);
+  };
+
   const handleClose = () => {
     setStep(1);
+    setReservationNumber("");
     setFormData({ fullName: "", email: "", phone: "", dateOfTravel: "" });
     onClose();
   };
@@ -78,7 +86,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                   </svg>
                 </button>
                 <h3 className="font-clash text-2xl md:text-3xl font-600 mb-2">
-                  {step === 1 ? "Book Your Trip" : "Complete Payment"}
+                  {step === 1 ? "Reserve Your Trip" : step === 2 ? "Complete Payment" : "Reservation"}
                 </h3>
                 <p className="text-white/80 text-sm md:text-base font-switzerland">
                   {itineraryName}
@@ -135,12 +143,17 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                     
                     <div className="pt-4 relative">
                       {!isEnquiryMode ? (
-                        <button 
-                          type="submit"
-                          className="w-full bg-[#F59E0B] hover:bg-[#d98b09] text-[#06172E] py-4 rounded-xl font-700 text-lg transition-colors duration-300 shadow-md"
-                        >
-                          Pay Now
-                        </button>
+                        <div className="space-y-3">
+                          <p className="text-center text-xs text-gray-500 font-500 italic">
+                            *reserve now for INR 999/- only
+                          </p>
+                          <button 
+                            type="submit"
+                            className="w-full bg-[#F59E0B] hover:bg-[#d98b09] text-[#06172E] py-4 rounded-xl font-700 text-lg transition-colors duration-300 shadow-md"
+                          >
+                            Reserve Now
+                          </button>
+                        </div>
                       ) : (
                         <div className="relative">
                           <button 
@@ -210,10 +223,78 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                     </div>
 
                     <button 
-                      onClick={handleClose}
+                      onClick={handlePaymentComplete}
                       className="w-full bg-[#06172E] hover:bg-[#0a2345] text-white py-4 rounded-xl font-700 transition-colors duration-300"
                     >
                       I have made the payment
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center text-center py-4">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p className="text-xl font-700 text-gray-900 mb-2 tracking-tight">Payment Received</p>
+                    <p className="text-orange-600 font-600 mb-6 uppercase tracking-wider text-sm">Reservation not confirmed yet.</p>
+                    
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-5 mb-8 w-full">
+                      <span className="block text-sm text-gray-500 mb-1 uppercase tracking-wider font-600">Reservation Number</span>
+                      <span className="block text-2xl font-800 text-[#06172E] tracking-tight">{reservationNumber}</span>
+                    </div>
+
+                    <button 
+                      onClick={() => {
+                        const content = `
+                          <html>
+                            <head>
+                              <title>Reservation - ${reservationNumber}</title>
+                              <style>
+                                body { font-family: system-ui, -apple-system, sans-serif; padding: 40px; color: #06172E; }
+                                .header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 30px; }
+                                h1 { margin: 0; font-size: 24px; }
+                                .badge { display: inline-block; padding: 5px 10px; background: #fff3e0; color: #e65100; font-weight: bold; border-radius: 4px; font-size: 12px; margin-top: 10px; }
+                                .details { margin-top: 30px; line-height: 1.8; font-size: 16px; }
+                                .label { font-weight: bold; color: #666; width: 140px; display: inline-block; }
+                                .value { font-weight: 600; }
+                              </style>
+                            </head>
+                            <body onload="window.print()">
+                              <div class="header">
+                                <h1>Nomado Travels</h1>
+                                <p style="margin-top: 5px; color: #666;">Reservation Receipt</p>
+                                <div class="badge">RESERVATION NOT CONFIRMED YET</div>
+                              </div>
+                              <div class="details">
+                                <div><span class="label">Reservation #:</span> <span class="value">${reservationNumber}</span></div>
+                                <div><span class="label">Name:</span> <span class="value">${formData.fullName}</span></div>
+                                <div><span class="label">Email:</span> <span class="value">${formData.email}</span></div>
+                                <div><span class="label">Phone:</span> <span class="value">${formData.phone}</span></div>
+                                <div><span class="label">Itinerary:</span> <span class="value">${itineraryName}</span></div>
+                                <div><span class="label">Travel Date:</span> <span class="value">${formData.dateOfTravel}</span></div>
+                                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;"><span class="label">Amount Paid:</span> <span class="value">INR 999/-</span></div>
+                              </div>
+                            </body>
+                          </html>
+                        `;
+                        const blob = new Blob([content], { type: 'text/html' });
+                        const url = URL.createObjectURL(blob);
+                        window.open(url, '_blank');
+                      }}
+                      className="w-full bg-[#06172E] hover:bg-[#0a2345] text-white py-4 rounded-xl font-700 transition-colors duration-300 flex items-center justify-center gap-2 mb-3 shadow-md"
+                    >
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      Download Itinerary (PDF)
+                    </button>
+
+                    <button 
+                      onClick={handleClose}
+                      className="w-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 py-3.5 rounded-xl font-600 transition-colors duration-300"
+                    >
+                      Close
                     </button>
                   </div>
                 )}
