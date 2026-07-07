@@ -28,12 +28,12 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
 
   const isEnquiryMode = formData.dateOfTravel && new Date(formData.dateOfTravel) > new Date("2026-10-20");
 
-  const handleEnquireClick = (e: React.MouseEvent) => {
+  const handleEnquireClick = (e: any) => {
     e.preventDefault();
     setShowDropdown(!showDropdown);
   };
 
-  const handlePayNow = (e: React.FormEvent) => {
+  const handlePayNow = (e: any) => {
     e.preventDefault();
     setStep(2);
   };
@@ -145,7 +145,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                       {!isEnquiryMode ? (
                         <div className="space-y-3">
                           <p className="text-center text-xs text-gray-500 font-500 italic">
-                            *reserve now for INR 999/- only
+                            reserve now for INR 999/- only*
                           </p>
                           <button 
                             type="submit"
