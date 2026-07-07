@@ -201,7 +201,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
                       )}
                     </div>
                   </form>
-                ) : (
+                ) : step === 2 ? (
                   <div className="flex flex-col items-center text-center py-4">
                     <p className="text-gray-600 mb-6">
                       Scan the QR code below or use the UPI ID to make your payment securely.
