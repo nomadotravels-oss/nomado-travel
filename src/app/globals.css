@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-
 @import "tailwindcss";
 @source "../**/*.{ts,tsx}";
 
@@ -16,8 +14,8 @@
 
 html { scroll-behavior: smooth; }
 
-.font-century { font-family: 'Figtree', sans-serif; font-weight: 700; }
-.font-century-bold { font-family: 'Figtree', sans-serif; font-weight: 900; -webkit-text-stroke: 0.7px currentColor; }
+.font-century { font-family: var(--font-figtree); font-weight: 700; }
+.font-century-bold { font-family: var(--font-figtree); font-weight: 900; -webkit-text-stroke: 0.7px currentColor; }
 @media (max-width: 767px) {
   .font-century-bold { -webkit-text-stroke: 0.9px currentColor; }
 }
@@ -25,7 +23,7 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--white);
   color: var(--charcoal);
-  font-family: 'Figtree', sans-serif;
+  font-family: var(--font-figtree);
   overflow-x: hidden;
 }
 
@@ -43,17 +41,17 @@ button, a, [role="button"], input[type="submit"], label[for] {
 
 /* ── Fonts ──────────────────────────────── */
 @utility font-clash {
-  font-family: 'Figtree', sans-serif;
+  font-family: var(--font-figtree);
   letter-spacing: -0.02em;
 }
 @utility font-cormorant {
-  font-family: 'Figtree', sans-serif;
+  font-family: var(--font-figtree);
   font-style: italic;
   font-weight: 300;
   letter-spacing: 0.02em;
 }
 @utility font-switzerland {
-  font-family: 'Figtree', sans-serif;
+  font-family: var(--font-figtree);
 }
 
 /* ── Marquee ────────────────────────────── */
