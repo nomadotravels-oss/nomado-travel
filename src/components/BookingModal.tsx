@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 interface BookingModalProps {
   isOpen: boolean;
