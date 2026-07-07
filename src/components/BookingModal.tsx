@@ -25,7 +25,7 @@ export default function BookingModal({ isOpen, onClose, itineraryName }: Booking
     setMounted(true);
   }, []);
 
-  const isEnquiryMode = formData.dateOfTravel && new Date(formData.dateOfTravel) > new Date("2026-10-20");
+  const isEnquiryMode = formData.dateOfTravel && new Date(formData.dateOfTravel).getTime() > new Date("2026-10-20").getTime();
 
   const handleEnquireClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
