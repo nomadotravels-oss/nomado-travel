@@ -70,10 +70,26 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     
                     {/* Duration Badge */}
-                    <div className="absolute top-4 left-4 bg-[#F59E0B] px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 bg-[#F59E0B] px-3 py-1 rounded-full shadow-sm">
                       <span className="text-[11px] tracking-[0.08em] font-700 text-[#06172E] uppercase">
                         {itinerary.duration}
                       </span>
+                    </div>
+
+                    {/* Inclusion Icons */}
+                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5">
+                      <div className="bg-black/40 backdrop-blur-md text-white p-1.5 rounded-lg shadow-sm" title="Hotels">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v2H9V7zm0 4h1v2H9v-2zm0 4h1v2H9v-2zm-2 4h5v-4H7v4zm10-12h1v2h-1V7zm0 4h1v2h-1v-2zm0 4h1v2h-1v-2z"></path></svg>
+                      </div>
+                      <div className="bg-black/40 backdrop-blur-md text-white p-1.5 rounded-lg shadow-sm" title="Cabs">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h8a2 2 0 012 2v7a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zm0 0l-3 4m11-4l3 4M5 14h14M8 11h8"></path></svg>
+                      </div>
+                      <div className="bg-black/40 backdrop-blur-md text-white p-1.5 rounded-lg shadow-sm" title="Meals">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-4a2 2 0 00-2-2h-4a2 2 0 00-2 2v4M7 21v-4a2 2 0 00-2-2H1a2 2 0 00-2 2v4"></path></svg>
+                      </div>
+                      <div className="bg-black/40 backdrop-blur-md text-white p-1.5 rounded-lg shadow-sm" title="Sightseeing">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                      </div>
                     </div>
                   </div>
 
@@ -82,29 +98,9 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
                     <h3 className="font-clash text-xl md:text-[1.35rem] font-600 text-[#06172E] mb-2 leading-tight">
                       {itinerary.name}
                     </h3>
-                    <p className="text-gray-500 font-switzerland text-sm leading-relaxed line-clamp-2 mb-4">
+                    <p className="text-gray-500 font-switzerland text-sm leading-relaxed line-clamp-2 mb-5">
                       {itinerary.desc}
                     </p>
-                    
-                    {/* Inclusions */}
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <div className="flex items-center gap-1.5 bg-[#F5F9FD] text-[#06172E]/70 px-2 py-1 rounded-md border border-[#06172E]/5" title="Hotels">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v2H9V7zm0 4h1v2H9v-2zm0 4h1v2H9v-2zm-2 4h5v-4H7v4zm10-12h1v2h-1V7zm0 4h1v2h-1v-2zm0 4h1v2h-1v-2z"></path></svg>
-                        <span className="text-[10px] font-600 tracking-wide uppercase">Hotels</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 bg-[#F5F9FD] text-[#06172E]/70 px-2 py-1 rounded-md border border-[#06172E]/5" title="Cabs">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h8a2 2 0 012 2v7a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zm0 0l-3 4m11-4l3 4M5 14h14M8 11h8"></path></svg>
-                        <span className="text-[10px] font-600 tracking-wide uppercase">Cabs</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 bg-[#F5F9FD] text-[#06172E]/70 px-2 py-1 rounded-md border border-[#06172E]/5" title="Meals">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-4a2 2 0 00-2-2h-4a2 2 0 00-2 2v4M7 21v-4a2 2 0 00-2-2H1a2 2 0 00-2 2v4"></path></svg>
-                        <span className="text-[10px] font-600 tracking-wide uppercase">Meals</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 bg-[#F5F9FD] text-[#06172E]/70 px-2 py-1 rounded-md border border-[#06172E]/5" title="Sightseeing">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <span className="text-[10px] font-600 tracking-wide uppercase">Sightseeing</span>
-                      </div>
-                    </div>
                     
                     {/* Highlight Pills */}
                     <div className="flex flex-wrap gap-2 mb-6">
