@@ -90,48 +90,47 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
                     <div className="flex items-center gap-5 mb-6 text-[#06172E]">
                       {/* Hotels */}
                       <div title="Hotels">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                          <path d="M2 22h20" />
-                          <path d="M6 22V2h12v20" />
-                          <path d="M10 22v-4h4v4" />
-                          <path d="M12 22v-4" />
-                          <path d="M9 6h2" /><path d="M13 6h2" />
-                          <path d="M9 10h2" /><path d="M13 10h2" />
-                          <path d="M9 14h2" /><path d="M13 14h2" />
+                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 19h18" />
+                          <rect x="6" y="5" width="12" height="14" rx="1" />
+                          <path d="M10 19v-4h4v4" />
+                          <path d="M9 9h2" />
+                          <path d="M13 9h2" />
+                          <path d="M9 12h2" />
+                          <path d="M13 12h2" />
                         </svg>
                       </div>
                       
                       {/* Sightseeing */}
                       <div title="Sightseeing">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                          <rect x="2" y="8" width="20" height="12" />
-                          <circle cx="12" cy="14" r="3" />
-                          <path d="M6 8V5h5v3" />
-                          <circle cx="18" cy="11.5" r="1" fill="currentColor" />
+                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="4" y="8" width="16" height="11" rx="1" />
+                          <circle cx="12" cy="13.5" r="3.5" />
+                          <path d="M8 8V5h8v3" />
+                          <circle cx="17.5" cy="11" r="0.75" fill="currentColor" />
                         </svg>
                       </div>
                       
                       {/* Cabs */}
                       <div title="Cabs">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                          <path d="M2 17h2" />
-                          <circle cx="7" cy="17" r="3" />
-                          <path d="M10 17h4" />
-                          <circle cx="17" cy="17" r="3" />
-                          <path d="M20 17h2v-5h-3l-3-4H6L3 12v5" />
-                          <path d="M7 12V8h4v4" />
-                          <path d="M11 12V8h4l2 4" />
+                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 16.5h2" />
+                          <circle cx="7.5" cy="16.5" r="2.5" />
+                          <path d="M10 16.5h4" />
+                          <circle cx="16.5" cy="16.5" r="2.5" />
+                          <path d="M19 16.5h2v-4.5h-3l-2.5-4.5H8.5L6 12H3v4.5" />
+                          <path d="M8.5 12V7.5h7V12" />
+                          <path d="M12 7.5V12" />
                         </svg>
                       </div>
                       
                       {/* Meals */}
                       <div title="Meals">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                          <circle cx="12" cy="12" r="5" />
-                          <path d="M5 5v5h4V5" />
-                          <path d="M7 5v14" />
-                          <path d="M19 5v14" />
-                          <path d="M19 5h-2.5v7H19" />
+                        <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 19h18" />
+                          <path d="M5 19a7 7 0 0 1 14 0" />
+                          <path d="M12 12V9" />
+                          <circle cx="12" cy="8" r="1.5" />
                         </svg>
                       </div>
                     </div>
