@@ -93,6 +93,24 @@ export default function Itineraries() {
                     <p className="text-white/80 font-switzerland text-sm md:text-base lg:text-lg leading-relaxed max-w-sm line-clamp-2 md:line-clamp-none">
                       {itinerary.desc}
                     </p>
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-4 text-white/90">
+                      <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/10" title="Hotels">
+                        <svg className="w-4 h-4 md:w-4.5 md:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v2H9V7zm0 4h1v2H9v-2zm0 4h1v2H9v-2zm-2 4h5v-4H7v4zm10-12h1v2h-1V7zm0 4h1v2h-1v-2zm0 4h1v2h-1v-2z"></path></svg>
+                        <span className="text-xs font-500 tracking-wide">Hotels</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/10" title="Cabs">
+                        <svg className="w-4 h-4 md:w-4.5 md:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h8a2 2 0 012 2v7a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zm0 0l-3 4m11-4l3 4M5 14h14M8 11h8"></path></svg>
+                        <span className="text-xs font-500 tracking-wide">Cabs</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/10" title="Meals">
+                        <svg className="w-4 h-4 md:w-4.5 md:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-4a2 2 0 00-2-2h-4a2 2 0 00-2 2v4M7 21v-4a2 2 0 00-2-2H1a2 2 0 00-2 2v4"></path></svg>
+                        <span className="text-xs font-500 tracking-wide">Meals</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/10" title="Sightseeing">
+                        <svg className="w-4 h-4 md:w-4.5 md:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span className="text-xs font-500 tracking-wide">Sightseeing</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
