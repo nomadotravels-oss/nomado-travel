@@ -87,38 +87,56 @@ export default async function RegionItinerariesPage({ params }: { params: Promis
                     </p>
                     
                     {/* Large Inclusion Icons */}
-                    <div className="flex items-center gap-4 mb-5 text-[#06172E]">
+                    <div className="flex items-center gap-5 mb-6 text-[#06172E]">
+                      {/* Hotels */}
                       <div title="Hotels">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                          <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
-                          <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
-                          <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
-                          <path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+                        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 21h18" />
+                          <path d="M4 21V9h4" />
+                          <path d="M8 21V3h8v18" />
+                          <path d="M16 21v-8h4v8" />
+                          <path d="M10 21v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3" />
+                          <path d="M10 7h4" /><path d="M10 11h4" /><path d="M10 15h4" />
+                          <path d="M5 13h2" /><path d="M5 17h2" />
+                          <path d="M17 17h2" />
                         </svg>
                       </div>
+                      
+                      {/* Sightseeing */}
                       <div title="Sightseeing">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                          <path d="M10 10h4"/>
-                          <path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/>
-                          <path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"/>
-                          <path d="M 9 7 V 4 a 1 1 0 0 0 -1 -1 H 6 a 1 1 0 0 0 -1 1 v 3"/>
-                          <path d="M 4 21 a 2 2 0 0 1 -2 -2 v -3.851 c 0 -1.39 2 -2.962 2 -4.829 V 8 a 1 1 0 0 1 1 -1 H 9 a 1 1 0 0 1 1 1 v 11 a 2 2 0 0 1 -2 2 z"/>
+                        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="10" width="7" height="11" rx="2" />
+                          <path d="M4 10l1-6h3l1 6" />
+                          <rect x="14" y="10" width="7" height="11" rx="2" />
+                          <path d="M20 10l-1-6h-3l-1 6" />
+                          <path d="M10 14h4" />
+                          <path d="M10 17h4" />
+                          <path d="M3 4h5" /><path d="M16 4h5" />
                         </svg>
                       </div>
+                      
+                      {/* Cabs */}
                       <div title="Cabs">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                          <path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.6 5H8.4a2 2 0 0 0-1.9 1.3L5 10 3 8"/>
-                          <path d="M7 14h.01"/>
-                          <path d="M17 14h.01"/>
-                          <rect width="18" height="8" x="3" y="10" rx="2"/>
-                          <path d="M5 18v2"/><path d="M19 18v2"/>
+                        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M4 16H3V9h4l3-4h8a2 2 0 0 1 2 2v9h-1" />
+                          <circle cx="7.5" cy="16.5" r="2.5" />
+                          <circle cx="16.5" cy="16.5" r="2.5" />
+                          <path d="M10 16h4" />
+                          <path d="M7 9h11v4H5z" />
+                          <path d="M11 5v8" />
                         </svg>
                       </div>
+                      
+                      {/* Meals */}
                       <div title="Meals">
-                        <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                          <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
-                          <path d="M7 2v20"/>
-                          <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="13" r="7" />
+                          <circle cx="12" cy="13" r="4" strokeDasharray="2 2" />
+                          <path d="M4 5v5a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V5" />
+                          <path d="M6 5v16" />
+                          <path d="M4 5h4" />
+                          <path d="M20 5v8a2 2 0 0 1-2 2h-1V5c1.5 0 3 0 3 0z" />
+                          <path d="M18 15v6" />
                         </svg>
                       </div>
                     </div>
