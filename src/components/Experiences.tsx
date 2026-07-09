@@ -1,4 +1,5 @@
 "use client";
+// Trigger rebuild for deployment
 import { useRef } from "react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
