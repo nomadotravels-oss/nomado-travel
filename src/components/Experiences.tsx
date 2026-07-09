@@ -7,11 +7,11 @@ import Link from "next/link";
 import { experiences } from "@/data/experiences";
 
 const CATEGORIES = [
-  { id: "walks", label: "Walks & Hikes" },
-  { id: "food", label: "Food" },
-  { id: "hikes", label: "Hikes" },
-  { id: "make-it-yourself", label: "Make It Yourself" },
-  { id: "skiing", label: "Skiing" }
+  { id: "walks", label: "Walks & Hikes", image: "/images/downtown.jpg" },
+  { id: "food", label: "Food", image: "/images/wazwan-new.jpg" },
+  { id: "hikes", label: "Hikes", image: "/images/mountain-lake.jpg" },
+  { id: "make-it-yourself", label: "Make It Yourself", image: "/images/craft.jpg" },
+  { id: "skiing", label: "Skiing", image: "/images/gulmarg.jpg" }
 ] as const;
 
 export default function Experiences() {
@@ -33,25 +33,38 @@ export default function Experiences() {
           </div>
 
           {/* Premium Category Tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 mt-2">
             {CATEGORIES.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-28 cursor-pointer select-none ${
+                  className={`relative aspect-square overflow-hidden rounded-2xl text-left transition-all duration-300 cursor-pointer select-none group focus:outline-none ${
                     isActive 
-                      ? "bg-[#06172E] border-[#06172E] text-white shadow-[0_12px_24px_-10px_rgba(6,23,46,0.2)]" 
-                      : "bg-white border-gray-255 text-[#06172E] hover:border-gray-300 hover:shadow-sm"
+                      ? "ring-4 ring-[#F59E0B] ring-offset-2 scale-[0.98] shadow-md" 
+                      : "hover:scale-[1.02] shadow-[0_12px_28px_-16px_rgba(0,0,0,0.12)]"
                   }`}
                 >
-                  <span className={`text-[9px] font-700 uppercase tracking-widest ${isActive ? "text-[#F59E0B]" : "text-gray-400"}`}>
-                    Category
-                  </span>
-                  <span className="text-sm md:text-base font-750 tracking-tight mt-auto leading-tight">
-                    {tab.label}
-                  </span>
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={asset(tab.image)}
+                      alt={tab.label}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
+                    />
+                    {/* Bottom Dark Gradient Scrim */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Overlaid Title on Card Bottom-Left */}
+                  <div className="absolute bottom-0 left-0 p-4 sm:p-5 w-full text-left z-10 pointer-events-none">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-800 text-white font-switzerland tracking-tight leading-tight">
+                      {tab.label}
+                    </h3>
+                  </div>
                 </button>
               );
             })}
