@@ -8,7 +8,6 @@ import Link from "next/link";
 const CATEGORIES = [
   { id: "walks", label: "Walks & Hikes", image: "/images/downtown.jpg" },
   { id: "food", label: "Food", image: "/images/wazwan-new.jpg" },
-  { id: "hikes", label: "Hikes", image: "/images/mountain-lake.jpg" },
   { id: "make-it-yourself", label: "Make It Yourself", image: "/images/craft.jpg" },
   { id: "skiing", label: "Skiing", image: "/images/gulmarg.jpg" }
 ] as const;
@@ -29,7 +28,7 @@ export default function Experiences() {
           </div>
 
           {/* Premium Category Tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 mt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-2">
             {CATEGORIES.map((tab, i) => {
               return (
                 <Link

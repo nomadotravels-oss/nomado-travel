@@ -10,18 +10,13 @@ import Contact from "@/components/Contact";
 const CATEGORY_META: Record<string, { label: string; desc: string; image: string }> = {
   "walks": { 
     label: "Walks & Hikes", 
-    desc: "Wander through centuries of history, scenic villages, and local trails across Kashmir and Ladakh.",
+    desc: "Wander through centuries of history, local culture, scenic villages, and majestic mountain trails across Kashmir and Ladakh.",
     image: "/images/downtown.jpg" 
   },
   "food": { 
     label: "Food Experiences", 
     desc: "Indulge in authentic local culinary traditions, communal banquets, and regional specialties.",
     image: "/images/wazwan-new.jpg" 
-  },
-  "hikes": { 
-    label: "Hikes & Expeditions", 
-    desc: "Ascend rugged mountain ridges, cross high-altitude passes, and experience majestic Himalayan scenery.",
-    image: "/images/mountain-lake.jpg" 
   },
   "make-it-yourself": { 
     label: "Make It Yourself", 

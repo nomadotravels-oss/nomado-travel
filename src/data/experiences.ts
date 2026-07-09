@@ -140,7 +140,7 @@ export const experiences: Experience[] = [
   { 
     id: "mamneth-hike",
     region: "Kashmir", 
-    category: "hikes",
+    category: "walks",
     title: "Hiking to Mamneth", 
     image: "/images/mountain-lake.jpg", 
     desc: "Moderate ridge trek above Srinagar, rewarding hikers with sunset views over Dal Lake.",
@@ -153,7 +153,7 @@ export const experiences: Experience[] = [
   { 
     id: "ganda-la-hike",
     region: "Ladakh",  
-    category: "hikes",
+    category: "walks",
     title: "Ganda La Hike",              
     image: "/images/kargil.jpg",       
     desc: "High-altitude trek likely toward Ganda La pass, offering rugged Himalayan scenery en route to Markha Valley.",
