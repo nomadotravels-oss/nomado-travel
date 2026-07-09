@@ -1,5 +1,5 @@
 "use client";
-// Trigger rebuild for collage layout
+// Trigger rebuild for collage layout resize & reorder
 import { useRef } from "react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
@@ -20,7 +20,7 @@ export default function Experiences() {
   const renderCard = (tab: typeof CATEGORIES[number], titleSizeClass: string) => (
     <Link
       href={`/experiences/category/${tab.id}`}
-      className="relative w-full h-full overflow-hidden rounded-3xl text-left transition-all duration-500 cursor-pointer select-none group focus:outline-none hover:scale-[1.01] shadow-[0_16px_40px_-16px_rgba(0,0,0,0.18)] block"
+      className="relative w-full h-full overflow-hidden rounded-3xl text-left transition-all duration-500 cursor-pointer select-none group focus:outline-none hover:scale-[1.01] shadow-[0_16px_40px_-16px_rgba(0,0,0,0.18)] block w-full h-full"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -75,46 +75,46 @@ export default function Experiences() {
           ))}
         </div>
 
-        {/* PC View: Premium collage form with asymmetrical spans */}
-        <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-6 h-[500px] lg:h-[580px]">
-          {/* Walks & Hikes (Featured block: 2 cols wide, 2 rows high) */}
+        {/* PC View: Premium collage form with adjusted height (-15%) and new hierarchy */}
+        <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-6 h-[425px] lg:h-[490px]">
+          {/* Do It Yourself (Featured largest block: 2 cols wide, 2 rows high) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="col-span-2 row-span-2 relative"
           >
-            {renderCard(CATEGORIES[0], "text-2xl md:text-3xl lg:text-4xl")}
+            {renderCard(CATEGORIES[2], "text-2xl md:text-3xl lg:text-4xl")}
           </motion.div>
 
-          {/* Food (Landscape block: 2 cols wide, 1 row high) */}
+          {/* Skiing (Landscape second-largest block: 2 cols wide, 1 row high) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="col-span-2 row-span-1 relative"
           >
-            {renderCard(CATEGORIES[1], "text-xl md:text-2xl lg:text-3xl")}
+            {renderCard(CATEGORIES[3], "text-xl md:text-2xl lg:text-3xl")}
           </motion.div>
 
-          {/* Do It Yourself (Square block: 1 col wide, 1 row high) */}
+          {/* Walks & Hikes (Square block: 1 col wide, 1 row high) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="col-span-1 row-span-1 relative"
           >
-            {renderCard(CATEGORIES[2], "text-lg md:text-xl lg:text-2xl")}
+            {renderCard(CATEGORIES[0], "text-lg md:text-xl lg:text-2xl")}
           </motion.div>
 
-          {/* Skiing (Square block: 1 col wide, 1 row high) */}
+          {/* Food (Square block: 1 col wide, 1 row high) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="col-span-1 row-span-1 relative"
           >
-            {renderCard(CATEGORIES[3], "text-lg md:text-xl lg:text-2xl")}
+            {renderCard(CATEGORIES[1], "text-lg md:text-xl lg:text-2xl")}
           </motion.div>
         </div>
 
