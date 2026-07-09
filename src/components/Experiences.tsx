@@ -7,7 +7,7 @@ import Link from "next/link";
 import { experiences } from "@/data/experiences";
 
 const CATEGORIES = [
-  { id: "walks", label: "Walks & Tours" },
+  { id: "walks", label: "Walks & Hikes" },
   { id: "food", label: "Food" },
   { id: "hikes", label: "Hikes" },
   { id: "make-it-yourself", label: "Make It Yourself" },
@@ -27,33 +27,34 @@ export default function Experiences() {
         {/* Header Block */}
         <div className="flex flex-col mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl font-switzerland">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none">
               Experiences
             </h2>
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed">
-              Explore handpicked activities, from guided tours and culinary journeys to hands-on craft workshops and winter sports.
-            </p>
           </div>
 
-          {/* Premium Tabs */}
-          <div className="flex flex-wrap items-center gap-2 border-b border-gray-200/60 pb-3 mt-4">
-            {CATEGORIES.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className="relative px-4 py-2 text-sm font-600 transition-colors duration-300 focus:outline-none"
-                style={{ color: activeTab === tab.id ? "#000" : "#6B7280" }}
-              >
-                <span className="relative z-10">{tab.label}</span>
-                {activeTab === tab.id && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute inset-x-0 bottom-[-13px] h-[3px] bg-[#F59E0B]"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            ))}
+          {/* Premium Category Tiles */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mt-2">
+            {CATEGORIES.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between h-28 cursor-pointer select-none ${
+                    isActive 
+                      ? "bg-[#06172E] border-[#06172E] text-white shadow-[0_12px_24px_-10px_rgba(6,23,46,0.2)]" 
+                      : "bg-white border-gray-255 text-[#06172E] hover:border-gray-300 hover:shadow-sm"
+                  }`}
+                >
+                  <span className={`text-[9px] font-700 uppercase tracking-widest ${isActive ? "text-[#F59E0B]" : "text-gray-400"}`}>
+                    Category
+                  </span>
+                  <span className="text-sm md:text-base font-750 tracking-tight mt-auto leading-tight">
+                    {tab.label}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
