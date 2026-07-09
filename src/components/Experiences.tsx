@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
 const CATEGORIES = [
@@ -14,27 +14,38 @@ const CATEGORIES = [
 
 export default function Experiences() {
   const containerRef = useRef(null);
+  const inView = useInView(containerRef, { once: true, margin: "-80px" });
 
   return (
     <section id="experiences" ref={containerRef} className="bg-[#FAFAF8] py-20 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden font-switzerland">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header Block */}
-        <div className="flex flex-col mb-12 md:mb-16 gap-6">
-          <div className="max-w-2xl font-switzerland">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-800 text-black tracking-tight leading-none">
-              Experiences
-            </h2>
-          </div>
+        {/* Header Block matched exactly to Destinations */}
+        <div className="max-w-3xl mb-12 md:mb-16 font-switzerland">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="font-switzerland text-[clamp(2.2rem,5vw,3.5rem)] font-800 leading-none text-black tracking-tight"
+          >
+            Experiences
+          </motion.h2>
+        </div>
 
-          {/* Premium Category Tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-2">
-            {CATEGORIES.map((tab, i) => {
-              return (
+        {/* Category Tiles - Sized so 3 fit on screen at once (3-column grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+          {CATEGORIES.map((tab, i) => {
+            return (
+              <motion.div
+                key={tab.id}
+                initial={{ opacity: 0, y: 40 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.9, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full"
+              >
                 <Link
                   href={`/experiences/category/${tab.id}`}
-                  key={tab.id}
-                  className="relative aspect-square overflow-hidden rounded-2xl text-left transition-all duration-300 cursor-pointer select-none group focus:outline-none hover:scale-[1.02] shadow-[0_12px_28px_-16px_rgba(0,0,0,0.12)]"
+                  className="relative aspect-square overflow-hidden rounded-3xl text-left transition-all duration-300 cursor-pointer select-none group focus:outline-none hover:scale-[1.02] shadow-[0_16px_40px_-16px_rgba(0,0,0,0.18)] block"
                 >
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0">
@@ -43,22 +54,22 @@ export default function Experiences() {
                       alt={tab.label}
                       fill
                       className="object-cover"
-                      sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
+                      sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
                     />
                     {/* Bottom Dark Gradient Scrim */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" />
                   </div>
 
                   {/* Overlaid Title on Card Bottom-Left */}
-                  <div className="absolute bottom-0 left-0 p-4 sm:p-5 w-full text-left z-10 pointer-events-none">
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-800 text-white font-switzerland tracking-tight leading-tight group-hover:text-[#F59E0B] transition-colors duration-300">
+                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full text-left z-10 pointer-events-none">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-800 text-white font-switzerland tracking-tight leading-tight group-hover:text-[#F59E0B] transition-colors duration-300">
                       {tab.label}
                     </h3>
                   </div>
                 </Link>
-              );
-            })}
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
