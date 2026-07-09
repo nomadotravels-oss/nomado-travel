@@ -18,8 +18,8 @@ const CATEGORY_META: Record<string, { label: string; desc: string; image: string
     desc: "Indulge in authentic local culinary traditions, communal banquets, and regional specialties.",
     image: "/images/wazwan-new.jpg" 
   },
-  "make-it-yourself": { 
-    label: "Make It Yourself", 
+  "do-it-yourself": { 
+    label: "Do It Yourself", 
     desc: "Meditation through creation. Learn rare traditional crafts and skills from master Kashmiri artisans.",
     image: "/images/craft.jpg" 
   },

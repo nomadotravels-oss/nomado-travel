@@ -8,7 +8,7 @@ import Link from "next/link";
 const CATEGORIES = [
   { id: "walks", label: "Walks & Hikes", image: "/images/downtown.jpg" },
   { id: "food", label: "Food", image: "/images/wazwan-new.jpg" },
-  { id: "make-it-yourself", label: "Make It Yourself", image: "/images/craft.jpg" },
+  { id: "do-it-yourself", label: "Do It Yourself", image: "/images/craft.jpg" },
   { id: "skiing", label: "Skiing", image: "/images/gulmarg.jpg" }
 ] as const;
 

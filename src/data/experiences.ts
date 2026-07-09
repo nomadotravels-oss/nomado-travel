@@ -1,7 +1,7 @@
 export interface Experience {
   id: string;
   region: string;
-  category: "walks" | "food" | "hikes" | "make-it-yourself" | "skiing";
+  category: "walks" | "food" | "do-it-yourself" | "skiing";
   title: string;
   image: string;
   pos?: string;
@@ -120,23 +120,6 @@ export const experiences: Experience[] = [
     difficulty: "Easy",
     highlights: ["India's First Dark Sky Reserve", "Milky Way Visibility", "Astrophotography Opportunities", "High Altitude Observatory"]
   },
-
-  // food
-  { 
-    id: "wazwan-feast",
-    region: "Kashmir", 
-    category: "food",
-    title: "Wazwan Experience",     
-    image: "/images/wazwan-new.jpg",   
-    desc: "Elaborate multi-course Kashmiri banquet of slow-cooked meat dishes, shared communally in traditional style.",
-    longDesc: "Wazwan is the ultimate culinary experience of Kashmir, deeply rooted in the region's hospitality and culture. You will be seated on traditional carpets and share a massive copper platter (trami) with others. The feast involves a sequence of over a dozen intricately spiced, slow-cooked meat delicacies, prepared overnight by master chefs (wazas). From the succulent Seekh Kababs to the signature Rogan Josh and creamy Gushtaba, it is a meal fit for royalty.",
-    duration: "2 Hours",
-    location: "Srinagar, Kashmir",
-    difficulty: "Easy",
-    highlights: ["Traditional Copper Trami", "Over 15 Meat Delicacies", "Authentic Waza Preparation", "Kashmiri Kehwa to Finish"]
-  },
-
-  // hikes
   { 
     id: "mamneth-hike",
     region: "Kashmir", 
@@ -164,12 +147,27 @@ export const experiences: Experience[] = [
     highlights: ["High Altitude Pass (4,900m)", "Hemis National Park Scenery", "Remote Himalayan Villages", "Marmot and Blue Sheep Sightings"]
   },
 
-  // make-it-yourself
+  // food
+  { 
+    id: "wazwan-feast",
+    region: "Kashmir", 
+    category: "food",
+    title: "Wazwan Experience",     
+    image: "/images/wazwan-new.jpg",   
+    desc: "Elaborate multi-course Kashmiri banquet of slow-cooked meat dishes, shared communally in traditional style.",
+    longDesc: "Wazwan is the ultimate culinary experience of Kashmir, deeply rooted in the region's hospitality and culture. You will be seated on traditional carpets and share a massive copper platter (trami) with others. The feast involves a sequence of over a dozen intricately spiced, slow-cooked meat delicacies, prepared overnight by master chefs (wazas). From the succulent Seekh Kababs to the signature Rogan Josh and creamy Gushtaba, it is a meal fit for royalty.",
+    duration: "2 Hours",
+    location: "Srinagar, Kashmir",
+    difficulty: "Easy",
+    highlights: ["Traditional Copper Trami", "Over 15 Meat Delicacies", "Authentic Waza Preparation", "Kashmiri Kehwa to Finish"]
+  },
+
+  // do-it-yourself
   {
-    id: "papier-mache",
+    id: "learn-papier-mache",
     region: "Kashmir",
-    category: "make-it-yourself",
-    title: "Papier-Mâché",
+    category: "do-it-yourself",
+    title: "Learn Papier Mache",
     image: "/images/craft.jpg",
     desc: "Create and paint detailed paper pulp boxes, ornaments, and decor under master artisan guidance.",
     longDesc: "Immerse yourself in the meditative and historical art of Kashmiri Papier-Mâché. Guided by a veteran artisan whose family has practiced the art for generations, you will learn the step-by-step process of shaping wet paper pulp, smoothening it with local stone, applying natural base coats, and painting intricate Persian motifs (Naqash) with a fine brush. It's a journey of patience, focus, and artistic awakening.",
@@ -179,36 +177,10 @@ export const experiences: Experience[] = [
     highlights: ["Meditation through Painting", "Srinagar Heritage Workshops", "Legacy Artisan Guidance", "Take Home Your Own Hand-Painted Box"]
   },
   {
-    id: "pashmina-weaving",
+    id: "learn-naqashi",
     region: "Kashmir",
-    category: "make-it-yourself",
-    title: "Pashmina Weaving",
-    image: "/images/weaving.jpg",
-    desc: "Learn to operate a traditional handloom, weaving fine cashmere wool threads into iconic shawls.",
-    longDesc: "Operate a traditional wooden handloom alongside master weavers. In this hands-on workshop, you'll learn the sheer coordination required to pass the shuttle through fine Cashmere warp threads. Learn how the world's most luxurious wool is spun, sorted, and woven, gaining a profound appreciation for slow fashion and heritage craftsmanship.",
-    duration: "4 Hours",
-    location: "Srinagar, Kashmir",
-    difficulty: "Moderate",
-    highlights: ["Handloom Operation", "Understanding Cashmere Grades", "Artisan Apprenticeship", "Tactile Handloom Coordination"]
-  },
-  {
-    id: "walnut-wood-carving",
-    region: "Kashmir",
-    category: "make-it-yourself",
-    title: "Walnut Wood Carving",
-    image: "/images/wood-carving.jpg",
-    desc: "Chisel intricate traditional patterns into solid, fragrant Kashmiri walnut wood blocks.",
-    longDesc: "Work with hammer and chisels on local walnut wood blocks. You'll learn to carve traditional Kashmiri leaf and floral patterns from a master carver. This sensory experience is filled with the scent of aged walnut wood, the rhythm of woodcarving chisels, and the quiet satisfaction of seeing a flat block transform into layered art.",
-    duration: "3 Hours",
-    location: "Srinagar, Kashmir",
-    difficulty: "Moderate",
-    highlights: ["Fragrant Walnut Wood", "Chisel Techniques", "Traditional Carving Patterns", "Tactile Craftsmanship"]
-  },
-  {
-    id: "sozni-embroidery",
-    region: "Kashmir",
-    category: "make-it-yourself",
-    title: "Sozni Embroidery",
+    category: "do-it-yourself",
+    title: "Learn Naqashi",
     image: "/images/textiles.jpg",
     desc: "Master the fine needlework of Sozni, embroidering complex paisley and floral designs.",
     longDesc: "Sozni is one of the most sophisticated needlework embroideries in the world. You will sit in a traditional workshop, learn how to hold the micro-needle, and practice the close, miniature chain stitches that make up Kashmir's signature paisley and floral designs. This workshop focuses on precision, focus, and quiet creativity.",
@@ -218,10 +190,23 @@ export const experiences: Experience[] = [
     highlights: ["Legacy Micro-needle Techniques", "Traditional Paisley Outlining", "Focus and Patience Builder", "Create an Embroidered Fabric Panel"]
   },
   {
-    id: "carpet-weaving",
+    id: "learn-wickerwork",
     region: "Kashmir",
-    category: "make-it-yourself",
-    title: "Carpet Weaving",
+    category: "do-it-yourself",
+    title: "Learn Wickerwork",
+    image: "/images/wood-carving.jpg",
+    desc: "Chisel intricate traditional patterns into solid, fragrant Kashmiri walnut wood blocks.",
+    longDesc: "Work with hammer and chisels on local walnut wood blocks. You'll learn to carve traditional Kashmiri leaf and floral patterns from a master carver. This sensory experience is filled with the scent of aged walnut wood, the rhythm of woodcarving chisels, and the quiet satisfaction of seeing a flat block transform into layered art.",
+    duration: "3 Hours",
+    location: "Srinagar, Kashmir",
+    difficulty: "Moderate",
+    highlights: ["Fragrant Walnut Wood", "Chisel Techniques", "Traditional Carving Patterns", "Tactile Craftsmanship"]
+  },
+  {
+    id: "learn-namdakari",
+    region: "Kashmir",
+    category: "do-it-yourself",
+    title: "Learn Namdakari",
     image: "/images/textiles.jpg",
     desc: "Tie traditional Persian knots on a vertical loom, chanting the rhythmic Taleem weavers' code.",
     longDesc: "Sit at a massive vertical carpet loom and learn the rhythmic process of tying knots. A master weaver will teach you how to read the 'Taleem'—the written song-like code that dictates the carpet design. You'll practice cutting the yarn, packing the knots, and discover the ancient mathematics behind some of the world's most intricate silk-on-cotton carpets.",
